@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Yoga">
+<title>🧘🏻 Yoga Zufall</title>
+<style>
+  :root{
+    --bg1:#1b2a4a; --bg2:#22344f; --accent:#9bc7b5; --accent2:#e7b7a3;
+    --card:rgba(255,255,255,.08); --card-br:rgba(255,255,255,.16);
+    --text:#f4f1ea; --muted:#b9c2cf;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;height:100%;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:linear-gradient(160deg,var(--bg1),var(--bg2) 60%,#2c3e2f);
+    color:var(--text);min-height:100%;
+    display:flex;flex-direction:column;align-items:center;
+    padding:max(24px,env(safe-area-inset-top)) 20px max(24px,env(safe-area-inset-bottom));
+  }
+  .wrap{width:100%;max-width:460px;margin:auto;}
+  h1{font-size:1.5rem;font-weight:600;text-align:center;margin:.2em 0 .1em;}
+  .sub{text-align:center;color:var(--muted);font-size:.92rem;margin-bottom:1.6em;}
+  .label{font-size:.9rem;color:var(--muted);margin:0 0 .6em;}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
+  .chip{
+    flex:1 1 28%;min-width:0;text-align:center;
+    padding:14px 6px;border-radius:16px;border:1.5px solid var(--card-br);
+    background:var(--card);color:var(--text);font-size:1rem;font-weight:600;
+    cursor:pointer;transition:.15s;user-select:none;
+  }
+  .chip.active{background:var(--accent);color:#15241f;border-color:var(--accent);}
+  .custom{display:flex;align-items:center;gap:10px;margin-bottom:22px;}
+  .custom input{
+    flex:1;background:var(--card);border:1.5px solid var(--card-br);color:var(--text);
+    font-size:1.05rem;padding:14px 16px;border-radius:16px;width:100%;
+  }
+  .custom span{color:var(--muted);font-size:.95rem;}
+  .go{
+    width:100%;padding:18px;border:none;border-radius:18px;
+    background:linear-gradient(135deg,var(--accent),#7fae9b);color:#10201b;
+    font-size:1.18rem;font-weight:700;cursor:pointer;transition:.15s;
+    box-shadow:0 6px 20px rgba(0,0,0,.25);
+  }
+  .go:active{transform:scale(.98);}
+  .result{
+    margin-top:22px;background:var(--card);border:1.5px solid var(--card-br);
+    border-radius:20px;padding:20px;display:none;animation:fade .3s ease;
+  }
+  .result.show{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  .result .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+  .badge{font-size:.78rem;padding:4px 10px;border-radius:999px;background:rgba(155,199,181,.22);color:var(--accent);font-weight:600;}
+  .badge.ch{background:rgba(231,183,163,.18);color:var(--accent2);}
+  .result h2{font-size:1.12rem;line-height:1.35;margin:.1em 0 .9em;font-weight:600;}
+  .open{
+    display:block;width:100%;text-align:center;text-decoration:none;
+    padding:16px;border-radius:16px;background:#ff3b30;color:#fff;
+    font-size:1.08rem;font-weight:700;
+  }
+  .open:active{opacity:.85;}
+  .again{margin-top:12px;width:100%;padding:13px;border-radius:14px;border:1.5px solid var(--card-br);background:transparent;color:var(--text);font-size:.98rem;cursor:pointer;}
+  .progress{text-align:center;color:var(--muted);font-size:.86rem;margin-top:18px;line-height:1.5;}
+  .progress b{color:var(--accent);}
+  .reset{margin-top:8px;background:none;border:none;color:var(--muted);font-size:.82rem;text-decoration:underline;cursor:pointer;}
+  .toast{
+    position:fixed;left:50%;bottom:30px;transform:translateX(-50%) translateY(20px);
+    background:#2c3e2f;color:#fff;padding:12px 20px;border-radius:14px;font-size:.9rem;
+    opacity:0;transition:.3s;pointer-events:none;border:1px solid var(--card-br);max-width:90%;text-align:center;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  .err{color:var(--accent2);text-align:center;font-size:.9rem;margin-top:14px;min-height:1em;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🧘🏻 Yoga Zufall</h1>
+  <div class="sub">Wie viel Zeit hast du heute?</div>
+
+  <div class="label">Schnellauswahl</div>
+  <div class="chips" id="chips"></div>
+
+  <div class="label">…oder eigene Zeit eingeben</div>
+  <div class="custom">
+    <input id="customTime" type="number" inputmode="numeric" min="1" placeholder="z.&nbsp;B. 22" aria-label="Minuten">
+    <span>Minuten</span>
+  </div>
+
+  <button class="go" id="goBtn">Video auswählen&nbsp;🎲</button>
+  <div class="err" id="err"></div>
+
+  <div class="result" id="result">
+    <div class="meta">
+      <span class="badge" id="rDur"></span>
+      <span class="badge ch" id="rChan"></span>
+    </div>
+    <h2 id="rTitle"></h2>
+    <a class="open" id="rOpen" href="#" target="_blank" rel="noopener">▶︎ In YouTube öffnen</a>
+    <button class="again" id="againBtn">🎲 Anderes Video</button>
+  </div>
+
+  <div class="progress" id="progress"></div>
+  <button class="reset" id="resetBtn">Verlauf zurücksetzen</button>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const VIDEOS = [
+  {id:"xOJeRLc66r4",t:"Yoga Energy Flow | wach & energiegeladen in 15 Minuten | perfekt für zwischendurch",c:"Mady Morrison",d:15,k:"15 Minuten"},
+  {id:"4snu7NxD4nM",t:"15 Min. Morning Stretch | wake up & feel amazing | the best way to start your day!",c:"Mady Morrison",d:15,k:"15 Minuten"},
+  {id:"ihba9Lw0tv4",t:"10 Minute Morning Stretch for every day | Simple routine to wake up & feel good",c:"Mady Morrison",d:10,k:"15 Minuten"},
+  {id:"8dS4DUkLhBU",t:"Yoga Ganzkörper Flow | Verspannungen im oberen Rücken lösen | Entspannt in den Feierabend",c:"Mady Morrison",d:15,k:"15 Minuten"},
+  {id:"kApPj-mNcO4",t:"Yoga Beweglichkeit, Dehnung, Entspannung | Hüften öffnen & Rücken mobilisieren | Zur Ruhe kommen",c:"Mady Morrison",d:20,k:"20 Minuten"},
+  {id:"X2GxGhOcjQ0",t:"Yoga Ganzkörper Flow | 20 Min. Workout Mittelstufe | Fühl dich stark, fit & selbstbewusst!",c:"Mady Morrison",d:20,k:"20 Minuten"},
+  {id:"-btuQsCiyfc",t:"Yoga für den Morgen | sanft belebend und aktivierend | 18 Min. Rise & Shine (auch für Anfänger)",c:"Mady Morrison",d:18,k:"20 Minuten"},
+  {id:"SedzswEwpPw",t:"Yoga for Neck and Shoulder Relief - Yoga With Adriene",c:"Yoga With Adriene",d:20,k:"20 Minuten"},
+  {id:"LOi9B2Syej8",t:"Yoga Ganzkörper Flow | Stark, Konzentriert & Selbstbewusst | 25 Minuten Mittelstufe",c:"Mady Morrison",d:25,k:"25 Minuten"},
+  {id:"4CBKYS9ywBQ",t:"Yoga Flow für Energie, Kraft & Beweglichkeit | wach und klar | Joshua Tree",c:"Mady Morrison",d:25,k:"25 Minuten"},
+  {id:"xUHza6YKRfk",t:"Yoga für Entspannung & Beweglichkeit | Innere Ruhe finden + Verspannungen im Rücken lösen | Slow Yoga",c:"Mady Morrison",d:25,k:"25 Minuten"},
+  {id:"ti2tG5f9UX0",t:"Yoga Ganzkörper Flow für Kraft, Energie und Wärme | Beine, Po & Schultern | 25 Min. sweet & spicy",c:"Mady Morrison",d:25,k:"25 Minuten"},
+  {id:"Qq-4EM5cqQY",t:"Yoga für Kraft, Beweglichkeit & innere Ruhe | Beine stärken und dehnen | Vinyasa Flow",c:"Mady Morrison",d:25,k:"25 Minuten"},
+  {id:"iF9h0WwXWk8",t:"Yoga für Beweglichkeit | Stretch & Flow | Tiefe Dehnungen und neue Haltungen | Mittelstufe",c:"Mady Morrison",d:30,k:"30 Minuten"},
+  {id:"TAbH1yusgRo",t:"Yoga Ganzkörper Flow | Bauch Beine Po & Rücken | 30 Min. Workout",c:"Mady Morrison",d:30,k:"30 Minuten"},
+  {id:"WeKeMgD_Nl4",t:"Yoga Full Body Summer Flow | Kraft & Balance | 30 Min. stärken, dehnen und rundum gut fühlen",c:"Mady Morrison",d:30,k:"30 Minuten"},
+  {id:"JCsJgYI2vys",t:"Yoga für Rücken, Brust & Wirbelsäule | Körper mobilisieren | 30 Minuten zum wach werden & loslassen!",c:"Mady Morrison",d:30,k:"30 Minuten"},
+  {id:"5HswL9z6RgU",t:"Yoga für einen gesunden Rücken | Übungen gegen Verspannungen | Self Care Routine für jeden Tag",c:"Mady Morrison",d:30,k:"30 Minuten"},
+  {id:"cA1jIxcAi_o",t:"Power Yoga Vinyasa Flow | 30 Min. Ganzkörper Programm für Mittelstufe & Fortgeschrittene",c:"Mady Morrison",d:30,k:"Länger"},
+  {id:"23zxyx6DASc",t:"Yoga Ganzkörper Flow für Energie, Fokus & Gute Laune | 35 Min. Mallorca Sunshine Yoga",c:"Mady Morrison",d:35,k:"Länger"},
+  {id:"U2OcR9yGzas",t:"Yoga Ganzkörper Flow für Kraft, Energie und Beweglichkeit | 30 Minuten | macht happy & wach",c:"Mady Morrison",d:30,k:"Länger"},
+  {id:"hpCXz7taG2s",t:"Yoga Detox Flow | Stoffwechsel & Verdauung anregen, Entgiften und Stress abbauen | 35 Min.",c:"Mady Morrison",d:35,k:"Länger"},
+  {id:"oj-hxr2bZkI",t:"Yoga Flow 60 Minuten | Ganzkörper Programm | Selbstbewusstsein und innere Stärke",c:"Mady Morrison",d:60,k:"Länger"}
+];
+
+const STORAGE_KEY = "yogaWatched_v1";
+const QUICK = [15,20,25,30,45,60];
+
+let selectedTime = null;
+let lastPick = null;
+
+// ---- persistence ----
+function getWatched(){
+  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+  catch(e){ return []; }
+}
+function setWatched(arr){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); }catch(e){}
+}
+
+// ---- build quick chips ----
+const chipsEl = document.getElementById('chips');
+QUICK.forEach(min=>{
+  const b=document.createElement('button');
+  b.className='chip';
+  b.textContent = min+' Min';
+  b.dataset.min = min;
+  b.onclick=()=>{
+    selectedTime = min;
+    document.getElementById('customTime').value='';
+    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+    b.classList.add('active');
+    updateProgress();
+  };
+  chipsEl.appendChild(b);
+});
+
+const customEl = document.getElementById('customTime');
+customEl.addEventListener('input',()=>{
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  const v = parseInt(customEl.value,10);
+  selectedTime = (v>0)? v : null;
+  updateProgress();
+});
+
+// ---- core selection ----
+function eligible(time){
+  return VIDEOS.filter(v=>v.d<=time);
+}
+
+function pick(){
+  document.getElementById('err').textContent='';
+  const time = selectedTime;
+  if(!time || time<1){
+    document.getElementById('err').textContent='Bitte zuerst eine Zeit wählen.';
+    return;
+  }
+  const pool = eligible(time);
+  if(pool.length===0){
+    document.getElementById('err').textContent='Kein Video passt in '+time+' Min (kürzestes ist 10 Min).';
+    return;
+  }
+  let watched = getWatched();
+  let unseen = pool.filter(v=>!watched.includes(v.id));
+
+  // Wiederholung erst, wenn alle passenden Videos gesehen wurden
+  if(unseen.length===0){
+    // diese Zeit-Auswahl zurücksetzen, neue Runde
+    watched = watched.filter(id => !pool.some(v=>v.id===id));
+    unseen = pool.slice();
+    toast('Alle Videos dieser Zeit gesehen – neue Runde startet! 🌱');
+  }
+
+  // nicht zweimal direkt hintereinander dasselbe (wenn möglich)
+  let choices = unseen;
+  if(unseen.length>1 && lastPick){
+    const filtered = unseen.filter(v=>v.id!==lastPick);
+    if(filtered.length) choices = filtered;
+  }
+
+  const chosen = choices[Math.floor(Math.random()*choices.length)];
+  lastPick = chosen.id;
+  watched.push(chosen.id);
+  setWatched(watched);
+
+  showResult(chosen);
+  updateProgress();
+
+  // direkt in YouTube öffnen (gleiche Nutzer-Geste → kein Popup-Block)
+  const url = 'https://youtu.be/'+chosen.id;
+  document.getElementById('rOpen').href = url;
+  window.open(url,'_blank');
+}
+
+function showResult(v){
+  document.getElementById('rDur').textContent = v.d+' Min';
+  document.getElementById('rChan').textContent = v.c;
+  document.getElementById('rTitle').textContent = v.t;
+  document.getElementById('rOpen').href = 'https://youtu.be/'+v.id;
+  document.getElementById('result').classList.add('show');
+}
+
+function updateProgress(){
+  const p = document.getElementById('progress');
+  if(!selectedTime){ p.innerHTML='23 Videos in deiner Sammlung.'; return; }
+  const pool = eligible(selectedTime);
+  if(pool.length===0){ p.innerHTML=''; return; }
+  const watched = getWatched();
+  const seen = pool.filter(v=>watched.includes(v.id)).length;
+  p.innerHTML = 'Für ≤ '+selectedTime+' Min: <b>'+seen+' von '+pool.length+'</b> gesehen.<br>'+
+    'Videos wiederholen sich erst, wenn alle durch sind.';
+}
+
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2600);
+}
+
+document.getElementById('goBtn').onclick = pick;
+document.getElementById('againBtn').onclick = pick;
+document.getElementById('resetBtn').onclick = ()=>{
+  setWatched([]); lastPick=null;
+  document.getElementById('result').classList.remove('show');
+  updateProgress();
+  toast('Verlauf zurückgesetzt.');
+};
+
+updateProgress();
+</script>
+</body>
+</html>
