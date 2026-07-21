@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Yoga">
-<title>🧘🏻 Yoga Zufall</title>
+<meta name="apple-mobile-web-app-title" content="Bewegung">
+<title>Yoga · Fitness · Meditation</title>
 <style>
   :root{
     --bg1:#1b2a4a; --bg2:#22344f; --accent:#9bc7b5; --accent2:#e7b7a3;
     --card:rgba(255,255,255,.08); --card-br:rgba(255,255,255,.16);
     --text:#f4f1ea; --muted:#b9c2cf;
+    --yoga:#9bc7b5; --fitness:#e7a17a; --med:#b7a6e0;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html,body{margin:0;padding:0;height:100%;}
@@ -23,8 +24,34 @@
     padding:max(24px,env(safe-area-inset-top)) 20px max(24px,env(safe-area-inset-bottom));
   }
   .wrap{width:100%;max-width:460px;margin:auto;}
-  h1{font-size:1.5rem;font-weight:600;text-align:center;margin:.2em 0 .1em;}
-  .sub{text-align:center;color:var(--muted);font-size:.92rem;margin-bottom:1.6em;}
+  h1{font-size:1.4rem;font-weight:600;text-align:center;margin:.2em 0 .1em;}
+  .sub{text-align:center;color:var(--muted);font-size:.92rem;margin-bottom:1.4em;}
+  .screen{display:none;}
+  .screen.active{display:block;animation:fade .3s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+
+  /* Art selection */
+  .arts{display:flex;flex-direction:column;gap:14px;margin-top:10px;}
+  .art{
+    display:flex;align-items:center;gap:16px;padding:20px;border-radius:20px;
+    border:1.5px solid var(--card-br);background:var(--card);cursor:pointer;transition:.15s;
+  }
+  .art:active{transform:scale(.98);}
+  .art .ic{font-size:2rem;width:52px;height:52px;display:flex;align-items:center;justify-content:center;border-radius:14px;flex:none;}
+  .art .tx{flex:1;}
+  .art .tx b{font-size:1.15rem;display:block;}
+  .art .tx span{color:var(--muted);font-size:.85rem;}
+  .art.yoga .ic{background:rgba(155,199,181,.22);}
+  .art.fitness .ic{background:rgba(231,161,122,.22);}
+  .art.med .ic{background:rgba(183,166,224,.22);}
+  .art .arrow{color:var(--muted);font-size:1.3rem;}
+
+  .back{background:none;border:none;color:var(--muted);font-size:.95rem;cursor:pointer;padding:6px 0;margin-bottom:6px;}
+  .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;font-size:.9rem;font-weight:600;margin-bottom:16px;}
+  .pill.yoga{background:rgba(155,199,181,.22);color:var(--yoga);}
+  .pill.fitness{background:rgba(231,161,122,.22);color:var(--fitness);}
+  .pill.med{background:rgba(183,166,224,.22);color:var(--med);}
+
   .label{font-size:.9rem;color:var(--muted);margin:0 0 .6em;}
   .chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
   .chip{
@@ -47,12 +74,12 @@
     box-shadow:0 6px 20px rgba(0,0,0,.25);
   }
   .go:active{transform:scale(.98);}
+  .note{color:var(--muted);font-size:.82rem;margin:-8px 0 18px;line-height:1.5;}
   .result{
     margin-top:22px;background:var(--card);border:1.5px solid var(--card-br);
-    border-radius:20px;padding:20px;display:none;animation:fade .3s ease;
+    border-radius:20px;padding:20px;display:none;
   }
-  .result.show{display:block;}
-  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  .result.show{display:block;animation:fade .3s ease;}
   .result .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
   .badge{font-size:.78rem;padding:4px 10px;border-radius:999px;background:rgba(155,199,181,.22);color:var(--accent);font-weight:600;}
   .badge.ch{background:rgba(231,183,163,.18);color:var(--accent2);}
@@ -66,7 +93,7 @@
   .again{margin-top:12px;width:100%;padding:13px;border-radius:14px;border:1.5px solid var(--card-br);background:transparent;color:var(--text);font-size:.98rem;cursor:pointer;}
   .progress{text-align:center;color:var(--muted);font-size:.86rem;margin-top:18px;line-height:1.5;}
   .progress b{color:var(--accent);}
-  .reset{margin-top:8px;background:none;border:none;color:var(--muted);font-size:.82rem;text-decoration:underline;cursor:pointer;}
+  .reset{margin-top:8px;background:none;border:none;color:var(--muted);font-size:.82rem;text-decoration:underline;cursor:pointer;display:block;margin-left:auto;margin-right:auto;}
   .toast{
     position:fixed;left:50%;bottom:30px;transform:translateX(-50%) translateY(20px);
     background:#2c3e2f;color:#fff;padding:12px 20px;border-radius:14px;font-size:.9rem;
@@ -78,187 +105,308 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>🧘🏻 Yoga Zufall</h1>
-  <div class="sub">Wie viel Zeit hast du heute?</div>
+  <h1>Was tut dir heute gut?</h1>
+  <div class="sub" id="subtitle">Wähle eine Kategorie</div>
 
-  <div class="label">Schnellauswahl</div>
-  <div class="chips" id="chips"></div>
-
-  <div class="label">…oder eigene Zeit eingeben</div>
-  <div class="custom">
-    <input id="customTime" type="number" inputmode="numeric" min="1" placeholder="z.&nbsp;B. 22" aria-label="Minuten">
-    <span>Minuten</span>
-  </div>
-
-  <button class="go" id="goBtn">Video auswählen&nbsp;🎲</button>
-  <div class="err" id="err"></div>
-
-  <div class="result" id="result">
-    <div class="meta">
-      <span class="badge" id="rDur"></span>
-      <span class="badge ch" id="rChan"></span>
+  <!-- Screen 1: Art -->
+  <div class="screen active" id="screenArt">
+    <div class="arts">
+      <div class="art yoga" data-art="Yoga">
+        <div class="ic">🧘🏻</div>
+        <div class="tx"><b>Yoga</b><span>Mady Morrison &amp; mehr</span></div>
+        <div class="arrow">›</div>
+      </div>
+      <div class="art fitness" data-art="Fitness">
+        <div class="ic">💪</div>
+        <div class="tx"><b>Fitness</b><span>Gabi Fastner</span></div>
+        <div class="arrow">›</div>
+      </div>
+      <div class="art med" data-art="Meditation">
+        <div class="ic">🕉️</div>
+        <div class="tx"><b>Meditation</b><span>Ajahn Brahm</span></div>
+        <div class="arrow">›</div>
+      </div>
     </div>
-    <h2 id="rTitle"></h2>
-    <a class="open" id="rOpen" href="#" target="_blank" rel="noopener">▶︎ In YouTube öffnen</a>
-    <button class="again" id="againBtn">🎲 Anderes Video</button>
   </div>
 
-  <div class="progress" id="progress"></div>
-  <button class="reset" id="resetBtn">Verlauf zurücksetzen</button>
+  <!-- Screen 2: Time + result -->
+  <div class="screen" id="screenTime">
+    <button class="back" id="backBtn">‹ Kategorie ändern</button>
+    <span class="pill" id="pill"></span>
+
+    <div id="timeBlock">
+      <div class="label">Schnellauswahl</div>
+      <div class="chips" id="chips"></div>
+      <div class="label">…oder eigene Zeit eingeben</div>
+      <div class="custom">
+        <input id="customTime" type="number" inputmode="numeric" min="1" placeholder="z. B. 22" aria-label="Minuten">
+        <span>Minuten</span>
+      </div>
+    </div>
+    <div class="note" id="medNote" style="display:none;">
+      Für Meditationen sind noch keine Zeiten hinterlegt – es wird zufällig aus allen ausgewählt.
+    </div>
+
+    <button class="go" id="goBtn">Video auswählen&nbsp;🎲</button>
+    <div class="err" id="err"></div>
+
+    <div class="result" id="result">
+      <div class="meta">
+        <span class="badge" id="rDur"></span>
+        <span class="badge ch" id="rChan"></span>
+      </div>
+      <h2 id="rTitle"></h2>
+      <a class="open" id="rOpen" href="#" target="_blank" rel="noopener">▶︎ In YouTube öffnen</a>
+      <button class="again" id="againBtn">🎲 Anderes Video</button>
+    </div>
+
+    <div class="progress" id="progress"></div>
+    <button class="reset" id="resetBtn">Verlauf dieser Kategorie zurücksetzen</button>
+  </div>
 </div>
 <div class="toast" id="toast"></div>
 
 <script>
+// d = Dauer in Minuten, oder null (noch keine Zeit hinterlegt -> zählt immer als passend)
 const VIDEOS = [
-  {id:"xOJeRLc66r4",t:"Yoga Energy Flow | wach & energiegeladen in 15 Minuten | perfekt für zwischendurch",c:"Mady Morrison",d:15,k:"15 Minuten"},
-  {id:"4snu7NxD4nM",t:"15 Min. Morning Stretch | wake up & feel amazing | the best way to start your day!",c:"Mady Morrison",d:15,k:"15 Minuten"},
-  {id:"ihba9Lw0tv4",t:"10 Minute Morning Stretch for every day | Simple routine to wake up & feel good",c:"Mady Morrison",d:10,k:"15 Minuten"},
-  {id:"8dS4DUkLhBU",t:"Yoga Ganzkörper Flow | Verspannungen im oberen Rücken lösen | Entspannt in den Feierabend",c:"Mady Morrison",d:15,k:"15 Minuten"},
-  {id:"kApPj-mNcO4",t:"Yoga Beweglichkeit, Dehnung, Entspannung | Hüften öffnen & Rücken mobilisieren | Zur Ruhe kommen",c:"Mady Morrison",d:20,k:"20 Minuten"},
-  {id:"X2GxGhOcjQ0",t:"Yoga Ganzkörper Flow | 20 Min. Workout Mittelstufe | Fühl dich stark, fit & selbstbewusst!",c:"Mady Morrison",d:20,k:"20 Minuten"},
-  {id:"-btuQsCiyfc",t:"Yoga für den Morgen | sanft belebend und aktivierend | 18 Min. Rise & Shine (auch für Anfänger)",c:"Mady Morrison",d:18,k:"20 Minuten"},
-  {id:"SedzswEwpPw",t:"Yoga for Neck and Shoulder Relief - Yoga With Adriene",c:"Yoga With Adriene",d:20,k:"20 Minuten"},
-  {id:"LOi9B2Syej8",t:"Yoga Ganzkörper Flow | Stark, Konzentriert & Selbstbewusst | 25 Minuten Mittelstufe",c:"Mady Morrison",d:25,k:"25 Minuten"},
-  {id:"4CBKYS9ywBQ",t:"Yoga Flow für Energie, Kraft & Beweglichkeit | wach und klar | Joshua Tree",c:"Mady Morrison",d:25,k:"25 Minuten"},
-  {id:"xUHza6YKRfk",t:"Yoga für Entspannung & Beweglichkeit | Innere Ruhe finden + Verspannungen im Rücken lösen | Slow Yoga",c:"Mady Morrison",d:25,k:"25 Minuten"},
-  {id:"ti2tG5f9UX0",t:"Yoga Ganzkörper Flow für Kraft, Energie und Wärme | Beine, Po & Schultern | 25 Min. sweet & spicy",c:"Mady Morrison",d:25,k:"25 Minuten"},
-  {id:"Qq-4EM5cqQY",t:"Yoga für Kraft, Beweglichkeit & innere Ruhe | Beine stärken und dehnen | Vinyasa Flow",c:"Mady Morrison",d:25,k:"25 Minuten"},
-  {id:"iF9h0WwXWk8",t:"Yoga für Beweglichkeit | Stretch & Flow | Tiefe Dehnungen und neue Haltungen | Mittelstufe",c:"Mady Morrison",d:30,k:"30 Minuten"},
-  {id:"TAbH1yusgRo",t:"Yoga Ganzkörper Flow | Bauch Beine Po & Rücken | 30 Min. Workout",c:"Mady Morrison",d:30,k:"30 Minuten"},
-  {id:"WeKeMgD_Nl4",t:"Yoga Full Body Summer Flow | Kraft & Balance | 30 Min. stärken, dehnen und rundum gut fühlen",c:"Mady Morrison",d:30,k:"30 Minuten"},
-  {id:"JCsJgYI2vys",t:"Yoga für Rücken, Brust & Wirbelsäule | Körper mobilisieren | 30 Minuten zum wach werden & loslassen!",c:"Mady Morrison",d:30,k:"30 Minuten"},
-  {id:"5HswL9z6RgU",t:"Yoga für einen gesunden Rücken | Übungen gegen Verspannungen | Self Care Routine für jeden Tag",c:"Mady Morrison",d:30,k:"30 Minuten"},
-  {id:"cA1jIxcAi_o",t:"Power Yoga Vinyasa Flow | 30 Min. Ganzkörper Programm für Mittelstufe & Fortgeschrittene",c:"Mady Morrison",d:30,k:"Länger"},
-  {id:"23zxyx6DASc",t:"Yoga Ganzkörper Flow für Energie, Fokus & Gute Laune | 35 Min. Mallorca Sunshine Yoga",c:"Mady Morrison",d:35,k:"Länger"},
-  {id:"U2OcR9yGzas",t:"Yoga Ganzkörper Flow für Kraft, Energie und Beweglichkeit | 30 Minuten | macht happy & wach",c:"Mady Morrison",d:30,k:"Länger"},
-  {id:"hpCXz7taG2s",t:"Yoga Detox Flow | Stoffwechsel & Verdauung anregen, Entgiften und Stress abbauen | 35 Min.",c:"Mady Morrison",d:35,k:"Länger"},
-  {id:"oj-hxr2bZkI",t:"Yoga Flow 60 Minuten | Ganzkörper Programm | Selbstbewusstsein und innere Stärke",c:"Mady Morrison",d:60,k:"Länger"}
+  // ---------- YOGA ----------
+  {art:"Yoga",c:"Mady Morrison",d:15,id:"xOJeRLc66r4",t:"Yoga Energy Flow | wach & energiegeladen in 15 Minuten | perfekt für zwischendurch"},
+  {art:"Yoga",c:"Mady Morrison",d:15,id:"4snu7NxD4nM",t:"15 Min. Morning Stretch | wake up & feel amazing | the best way to start your day!"},
+  {art:"Yoga",c:"Mady Morrison",d:10,id:"ihba9Lw0tv4",t:"10 Minute Morning Stretch for every day | Simple routine to wake up & feel good"},
+  {art:"Yoga",c:"Mady Morrison",d:15,id:"8dS4DUkLhBU",t:"Yoga Ganzkörper Flow | Verspannungen im oberen Rücken lösen | Entspannt in den Feierabend"},
+  {art:"Yoga",c:"Mady Morrison",d:20,id:"kApPj-mNcO4",t:"Yoga Beweglichkeit, Dehnung, Entspannung | Hüften öffnen & Rücken mobilisieren | Zur Ruhe kommen"},
+  {art:"Yoga",c:"Mady Morrison",d:20,id:"X2GxGhOcjQ0",t:"Yoga Ganzkörper Flow | 20 Min. Workout Mittelstufe | Fühl dich stark, fit & selbstbewusst!"},
+  {art:"Yoga",c:"Mady Morrison",d:18,id:"-btuQsCiyfc",t:"Yoga für den Morgen | sanft belebend und aktivierend | 18 Min. Rise & Shine (auch für Anfänger)"},
+  {art:"Yoga",c:"Yoga With Adriene",d:20,id:"SedzswEwpPw",t:"Yoga for Neck and Shoulder Relief - Yoga With Adriene"},
+  {art:"Yoga",c:"Mady Morrison",d:25,id:"LOi9B2Syej8",t:"Yoga Ganzkörper Flow | Stark, Konzentriert & Selbstbewusst | 25 Minuten Mittelstufe"},
+  {art:"Yoga",c:"Mady Morrison",d:25,id:"4CBKYS9ywBQ",t:"Yoga Flow für Energie, Kraft & Beweglichkeit | wach und klar | Joshua Tree"},
+  {art:"Yoga",c:"Mady Morrison",d:25,id:"xUHza6YKRfk",t:"Yoga für Entspannung & Beweglichkeit | Innere Ruhe finden + Verspannungen im Rücken lösen | Slow Yoga"},
+  {art:"Yoga",c:"Mady Morrison",d:25,id:"ti2tG5f9UX0",t:"Yoga Ganzkörper Flow für Kraft, Energie und Wärme | Beine, Po & Schultern | 25 Min. sweet & spicy"},
+  {art:"Yoga",c:"Mady Morrison",d:25,id:"Qq-4EM5cqQY",t:"Yoga für Kraft, Beweglichkeit & innere Ruhe | Beine stärken und dehnen | Vinyasa Flow"},
+  {art:"Yoga",c:"Mady Morrison",d:30,id:"iF9h0WwXWk8",t:"Yoga für Beweglichkeit | Stretch & Flow | Tiefe Dehnungen und neue Haltungen | Mittelstufe"},
+  {art:"Yoga",c:"Mady Morrison",d:30,id:"TAbH1yusgRo",t:"Yoga Ganzkörper Flow | Bauch Beine Po & Rücken | 30 Min. Workout"},
+  {art:"Yoga",c:"Mady Morrison",d:30,id:"WeKeMgD_Nl4",t:"Yoga Full Body Summer Flow | Kraft & Balance | 30 Min. stärken, dehnen und rundum gut fühlen"},
+  {art:"Yoga",c:"Mady Morrison",d:30,id:"JCsJgYI2vys",t:"Yoga für Rücken, Brust & Wirbelsäule | Körper mobilisieren | 30 Minuten zum wach werden & loslassen!"},
+  {art:"Yoga",c:"Mady Morrison",d:30,id:"5HswL9z6RgU",t:"Yoga für einen gesunden Rücken | Übungen gegen Verspannungen | Self Care Routine für jeden Tag"},
+  {art:"Yoga",c:"Mady Morrison",d:30,id:"cA1jIxcAi_o",t:"Power Yoga Vinyasa Flow | 30 Min. Ganzkörper Programm für Mittelstufe & Fortgeschrittene"},
+  {art:"Yoga",c:"Mady Morrison",d:35,id:"23zxyx6DASc",t:"Yoga Ganzkörper Flow für Energie, Fokus & Gute Laune | 35 Min. Mallorca Sunshine Yoga"},
+  {art:"Yoga",c:"Mady Morrison",d:30,id:"U2OcR9yGzas",t:"Yoga Ganzkörper Flow für Kraft, Energie und Beweglichkeit | 30 Minuten | macht happy & wach"},
+  {art:"Yoga",c:"Mady Morrison",d:35,id:"hpCXz7taG2s",t:"Yoga Detox Flow | Stoffwechsel & Verdauung anregen, Entgiften und Stress abbauen | 35 Min."},
+  {art:"Yoga",c:"Mady Morrison",d:60,id:"oj-hxr2bZkI",t:"Yoga Flow 60 Minuten | Ganzkörper Programm | Selbstbewusstsein und innere Stärke"},
+  {art:"Yoga",c:"Mady Morrison",d:15,id:"NpDD8Sh1hzE",t:"15 Min. Yoga Routine für alle Level | Rücken kräftigen und Schultern lockern | Yoga Refresh"},
+  {art:"Yoga",c:"Mady Morrison",d:25,id:"xfHSq-Fmm50",t:"Yoga Ganzkörper Workout | stark, flexibel & ästhetisch | 25 Min. Strong Elegance Flow"},
+  {art:"Yoga",c:"Mady Morrison",d:30,id:"JEEUXPk04oo",t:"Yoga Ganzkörper Flow | 30 kraftvolle Min. für einen starken & flexiblen Körper | Flow & Fly"},
+  {art:"Yoga",c:"Mady Morrison",d:30,id:"rjbrTr_EbB4",t:"Yoga Ganzkörper Flow | Bauch, Beine & Balance | 30 Minuten für Kraft & Stabilität"},
+  {art:"Yoga",c:"Mady Morrison",d:45,id:"0Csrx8r6FAs",t:"Yoga Ganzkörper Flow | 45 Minuten Bauch Beine Po Workout + Stretch"},
+  {art:"Yoga",c:"Mady Morrison",d:45,id:"uaWBg9mPDVE",t:"Yoga Ganzkörper Flow | Unterkörper stärken & Wirbelsäule mobilisieren | 45 Min. ROOT TO RISE"},
+
+  // ---------- FITNESS (Gabi Fastner) ----------
+  {art:"Fitness",c:"Gabi Fastner",d:15,id:"wHBhn5ENeXI",t:"15 min. einfach in Bewegung kommen | wohlfühlen & eine kurze Zeit für Sich, ohne Geräte, im Stehen"},
+  {art:"Fitness",c:"Gabi Fastner",d:15,id:"ExZwz6UW9rY",t:"15 min. WAKE-UP Gymnastik | durchbewegt, stabil & viel Energie in den Tag, ohne Geräte, im Stehen"},
+  {art:"Fitness",c:"Gabi Fastner",d:15,id:"63h5AlK74F4",t:"15 min. Guter Dinge durch Morgen - Gymnastik | Frühsport für Kopf & Körper, im Stehen, ohne Geräte"},
+  {art:"Fitness",c:"Gabi Fastner",d:15,id:"_8RWU4aC6eE",t:"15 min. Frühsport kompakt | kurze Bewegungseinheit am Morgen, ohne Geräte, im Stehen"},
+  {art:"Fitness",c:"Gabi Fastner",d:15,id:"cZ6jsJsN6B4",t:"15 min. schnelles Figurtraining | easy Workout im Stehen, ohne Geräte"},
+  {art:"Fitness",c:"Gabi Fastner",d:20,id:"p20P43VSiag",t:"20 min. funktionelles Gesundheitstraining | ohne Geräte, im Stehen"},
+  {art:"Fitness",c:"Gabi Fastner",d:20,id:"uGorGULT8Nc",t:"In nur 20 min. Fitness und Figur verbessern | ohne Geräte für Fortgeschrittene"},
+  {art:"Fitness",c:"Gabi Fastner",d:20,id:"qcuiCPaSEc8",t:"20 min. Grundlagen-Ausdauer | Fettverbrennung und Cardio, beliebig erweiterbar, ohne Geräte"},
+  {art:"Fitness",c:"Gabi Fastner",d:20,id:"CVWsFFVYG0U",t:"20 min. Top-Figur-Training für Einsteiger | ohne Geräte"},
+  {art:"Fitness",c:"Gabi Fastner",d:20,id:"0bFpYgypn4g",t:"Durchtrainiert in 20 min. | kompaktes Fullbody-Workout für Fortgeschrittene, ohne Geräte"},
+  {art:"Fitness",c:"Gabi Fastner",d:25,id:"OHKmC1lB44E",t:"25 min. Energy-Training | High Impact, ohne Geräte, im Stehen"},
+  {art:"Fitness",c:"Gabi Fastner",d:25,id:"sFGsSs4D6kA",t:"25 min. Schnellkraft Training | Intensiv-Workout ohne Geräte, für Fortgeschrittene"},
+  {art:"Fitness",c:"Gabi Fastner",d:25,id:"94xMYQYvFkY",t:"25 min. Hantel-Training bei Hitze | aktiv bleiben trotz Hitze | Figurworkout im Stehen & Liegen"},
+  {art:"Fitness",c:"Gabi Fastner",d:25,id:"ZgIUdUvU-Ec",t:"25 min. Herz-Kreislauf-Training | ohne Geräte, im Stehen"},
+  {art:"Fitness",c:"Gabi Fastner",d:25,id:"jDxWhuwaMoM",t:"25 min. Vormittags Training | Kräftigung und Figur | ohne Geräte"},
+  {art:"Fitness",c:"Gabi Fastner",d:30,id:"YiBFpXj342E",t:"30 min. die Hälfte reicht! Ganzkörper - Figur - Workout in kurzer Zeit, ohne Geräte"},
+  {art:"Fitness",c:"Gabi Fastner",d:30,id:"2pEh4-ynggc",t:"30 min. in Form | Fullbody - Workout für Zuhause | Figurtraining ohne Geräte"},
+  {art:"Fitness",c:"Gabi Fastner",d:30,id:"ag0XWAebVtQ",t:"30 min. kniefreundliches Ganzkörper-Workout | ohne Geräte"},
+  {art:"Fitness",c:"Gabi Fastner",d:30,id:"nP_6NeNtNnM",t:"In 30 min. super in Form | Home-Workout ohne Geräte, für Fortgeschrittene"},
+  {art:"Fitness",c:"Gabi Fastner",d:30,id:"15erd3ILI-A",t:"30 min. Figur - WORKOUT | formen, straffen, kräftigen | ohne Geräte"},
+  {art:"Fitness",c:"Gabi Fastner",d:40,id:"zUjQbFkf62Y",t:"40 min. Faszien Fitness | ohne Geräte, für Fortgeschrittene"},
+  {art:"Fitness",c:"Gabi Fastner",d:40,id:"S14Zh8IUDVs",t:"40 min. Workout für Faszien und Figur | ohne Geräte"},
+  {art:"Fitness",c:"Gabi Fastner",d:40,id:"y7DDvRcV50A",t:"40 min. Bewegungsstunde Faszien | Figur, Gesundheit und Wohlbefinden"},
+  {art:"Fitness",c:"Gabi Fastner",d:40,id:"KInCMicX6Uw",t:"40 min. Faszien Gymnastik ohne Geräte"},
+  {art:"Fitness",c:"Gabi Fastner",d:45,id:"arj-U9o2oXM",t:"45 min. Faszien, Körpermitte, Stretching | ohne Geräte, im Stehen"},
+
+  // ---------- MEDITATION (Ajahn Brahm) - noch keine Dauer ----------
+  {art:"Meditation",c:"Ajahn Brahm Miniclips",d:null,id:"UX-fH2yh_PQ",t:"30 min Beginners Guided Meditation by Ajahn Brahm"},
+  {art:"Meditation",c:"Maha Satipatthana Buddhist Society",d:null,id:"Brp03Z4zrGM",t:"Ajahn Brahm Guided Meditation 20min"},
+  {art:"Meditation",c:"BSWA Retreats 2011-15 & Media",d:null,id:"-3i4SBmY204",t:"guided meditation - Ajahn Brahm"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"viAq-ltPTXc",t:"Guided Meditation | Ajahn Brahm | 1 June 2024"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"PVOHNAJZVwE",t:"Guided Meditation | Ajahn Brahm | 15 February 2025"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"qTkXE1w6uOU",t:"Guided Meditation | Ajahn Brahm | 1 March 2025"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"hffUqbnxZMA",t:"Guided Meditation | Ajahn Brahm | 12 January 2019"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"SolfVZ5oE5I",t:"Guided Meditation | Ajahn Brahm | 23 March 2024"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"wp63nFkiu-g",t:"Guided Meditation | Ajahn Brahm | 16 November 2024"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"jl21xT2buk0",t:"Guided Meditation | Ajahn Brahm | 13 April 2024"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"45lYuXK3K9Q",t:"Guided Meditation | Ajahn Brahm | 22 June 2024"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"X47Z0T9OCBo",t:"Friday Night Guided Meditation | Ajahn Brahm | 13 March 2026"}
 ];
 
-const STORAGE_KEY = "yogaWatched_v1";
 const QUICK = [15,20,25,30,45,60];
+const ART_META = {
+  Yoga:{icon:"🧘🏻",cls:"yoga"},
+  Fitness:{icon:"💪",cls:"fitness"},
+  Meditation:{icon:"🕉️",cls:"med"}
+};
 
+let currentArt = null;
 let selectedTime = null;
 let lastPick = null;
 
-// ---- persistence ----
-function getWatched(){
-  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
-  catch(e){ return []; }
+// ---- persistence (Verlauf pro Art getrennt) ----
+function keyFor(art){ return "watched_"+art+"_v2"; }
+function getWatched(art){
+  try{ return JSON.parse(localStorage.getItem(keyFor(art))) || []; }catch(e){ return []; }
 }
-function setWatched(arr){
-  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); }catch(e){}
+function setWatched(art,arr){
+  try{ localStorage.setItem(keyFor(art), JSON.stringify(arr)); }catch(e){}
 }
 
-// ---- build quick chips ----
+// ---- element refs ----
+const screenArt = document.getElementById('screenArt');
+const screenTime = document.getElementById('screenTime');
+const subtitle = document.getElementById('subtitle');
+const pill = document.getElementById('pill');
 const chipsEl = document.getElementById('chips');
+const customEl = document.getElementById('customTime');
+const timeBlock = document.getElementById('timeBlock');
+const medNote = document.getElementById('medNote');
+
+// ---- build quick chips ----
 QUICK.forEach(min=>{
   const b=document.createElement('button');
-  b.className='chip';
-  b.textContent = min+' Min';
-  b.dataset.min = min;
+  b.className='chip'; b.textContent=min+' Min'; b.dataset.min=min;
   b.onclick=()=>{
-    selectedTime = min;
-    document.getElementById('customTime').value='';
+    selectedTime=min; customEl.value='';
     document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-    b.classList.add('active');
-    updateProgress();
+    b.classList.add('active'); updateProgress();
   };
   chipsEl.appendChild(b);
 });
-
-const customEl = document.getElementById('customTime');
 customEl.addEventListener('input',()=>{
   document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  const v = parseInt(customEl.value,10);
-  selectedTime = (v>0)? v : null;
-  updateProgress();
+  const v=parseInt(customEl.value,10);
+  selectedTime=(v>0)?v:null; updateProgress();
 });
 
-// ---- core selection ----
-function eligible(time){
-  return VIDEOS.filter(v=>v.d<=time);
+// ---- art selection ----
+document.querySelectorAll('.art').forEach(el=>{
+  el.onclick=()=>selectArt(el.dataset.art);
+});
+function selectArt(art){
+  currentArt=art; selectedTime=null; lastPick=null; customEl.value='';
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  document.getElementById('result').classList.remove('show');
+  document.getElementById('err').textContent='';
+
+  const m=ART_META[art];
+  pill.className='pill '+m.cls;
+  pill.textContent=m.icon+' '+art;
+
+  // Meditation: keine Zeiten -> Zeitauswahl ausblenden
+  const noTime = (art==="Meditation");
+  timeBlock.style.display = noTime ? 'none' : 'block';
+  medNote.style.display = noTime ? 'block' : 'none';
+
+  subtitle.textContent = noTime ? 'Tippe auf Video auswählen' : 'Wie viel Zeit hast du?';
+  screenArt.classList.remove('active');
+  screenTime.classList.add('active');
+  updateProgress();
+}
+document.getElementById('backBtn').onclick=()=>{
+  screenTime.classList.remove('active');
+  screenArt.classList.add('active');
+  subtitle.textContent='Wähle eine Kategorie';
+};
+
+// ---- selection core ----
+function eligible(art,time){
+  return VIDEOS.filter(v=>{
+    if(v.art!==art) return false;
+    if(v.d==null) return true;          // ohne Dauer -> immer passend
+    if(time==null) return true;
+    return v.d<=time;
+  });
 }
 
 function pick(){
   document.getElementById('err').textContent='';
-  const time = selectedTime;
-  if(!time || time<1){
+  const needTime = (currentArt!=="Meditation");
+  if(needTime && (!selectedTime || selectedTime<1)){
     document.getElementById('err').textContent='Bitte zuerst eine Zeit wählen.';
     return;
   }
-  const pool = eligible(time);
+  const pool = eligible(currentArt, needTime?selectedTime:null);
   if(pool.length===0){
-    document.getElementById('err').textContent='Kein Video passt in '+time+' Min (kürzestes ist 10 Min).';
+    document.getElementById('err').textContent='Kein Video passt in '+selectedTime+' Min (kürzestes ist 10 Min).';
     return;
   }
-  let watched = getWatched();
+  let watched = getWatched(currentArt);
   let unseen = pool.filter(v=>!watched.includes(v.id));
 
-  // Wiederholung erst, wenn alle passenden Videos gesehen wurden
   if(unseen.length===0){
-    // diese Zeit-Auswahl zurücksetzen, neue Runde
     watched = watched.filter(id => !pool.some(v=>v.id===id));
     unseen = pool.slice();
-    toast('Alle Videos dieser Zeit gesehen – neue Runde startet! 🌱');
+    toast('Alle Videos dieser Auswahl gesehen – neue Runde! 🌱');
   }
 
-  // nicht zweimal direkt hintereinander dasselbe (wenn möglich)
   let choices = unseen;
   if(unseen.length>1 && lastPick){
-    const filtered = unseen.filter(v=>v.id!==lastPick);
-    if(filtered.length) choices = filtered;
+    const f = unseen.filter(v=>v.id!==lastPick);
+    if(f.length) choices=f;
   }
 
   const chosen = choices[Math.floor(Math.random()*choices.length)];
   lastPick = chosen.id;
   watched.push(chosen.id);
-  setWatched(watched);
+  setWatched(currentArt, watched);
 
   showResult(chosen);
   updateProgress();
 
-  // direkt in YouTube öffnen (gleiche Nutzer-Geste → kein Popup-Block)
-  const url = 'https://youtu.be/'+chosen.id;
-  document.getElementById('rOpen').href = url;
+  const url='https://youtu.be/'+chosen.id;
+  document.getElementById('rOpen').href=url;
   window.open(url,'_blank');
 }
 
 function showResult(v){
-  document.getElementById('rDur').textContent = v.d+' Min';
+  document.getElementById('rDur').textContent = (v.d==null? 'Meditation' : v.d+' Min');
   document.getElementById('rChan').textContent = v.c;
   document.getElementById('rTitle').textContent = v.t;
-  document.getElementById('rOpen').href = 'https://youtu.be/'+v.id;
+  document.getElementById('rOpen').href='https://youtu.be/'+v.id;
   document.getElementById('result').classList.add('show');
 }
 
 function updateProgress(){
-  const p = document.getElementById('progress');
-  if(!selectedTime){ p.innerHTML='23 Videos in deiner Sammlung.'; return; }
-  const pool = eligible(selectedTime);
+  const p=document.getElementById('progress');
+  if(!currentArt){ p.innerHTML=''; return; }
+  const needTime = (currentArt!=="Meditation");
+  if(needTime && !selectedTime){
+    const total=VIDEOS.filter(v=>v.art===currentArt).length;
+    p.innerHTML=total+' '+currentArt+'-Videos in deiner Sammlung.'; return;
+  }
+  const pool=eligible(currentArt, needTime?selectedTime:null);
   if(pool.length===0){ p.innerHTML=''; return; }
-  const watched = getWatched();
-  const seen = pool.filter(v=>watched.includes(v.id)).length;
-  p.innerHTML = 'Für ≤ '+selectedTime+' Min: <b>'+seen+' von '+pool.length+'</b> gesehen.<br>'+
-    'Videos wiederholen sich erst, wenn alle durch sind.';
+  const watched=getWatched(currentArt);
+  const seen=pool.filter(v=>watched.includes(v.id)).length;
+  const scope = needTime ? ('für ≤ '+selectedTime+' Min') : ('('+currentArt+')');
+  p.innerHTML=scope+': <b>'+seen+' von '+pool.length+'</b> gesehen.<br>Wiederholung erst, wenn alle durch sind.';
 }
 
 function toast(msg){
   const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
+  t.textContent=msg; t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),2600);
 }
 
-document.getElementById('goBtn').onclick = pick;
-document.getElementById('againBtn').onclick = pick;
-document.getElementById('resetBtn').onclick = ()=>{
-  setWatched([]); lastPick=null;
+document.getElementById('goBtn').onclick=pick;
+document.getElementById('againBtn').onclick=pick;
+document.getElementById('resetBtn').onclick=()=>{
+  setWatched(currentArt,[]); lastPick=null;
   document.getElementById('result').classList.remove('show');
   updateProgress();
   toast('Verlauf zurückgesetzt.');
 };
-
-updateProgress();
 </script>
 </body>
 </html>
