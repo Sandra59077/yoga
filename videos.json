@@ -2,23 +2,16 @@
   {
     "art": "Yoga",
     "c": "Mady Morrison",
-    "d": 15,
-    "id": "xOJeRLc66r4",
-    "t": "Yoga Energy Flow | wach & energiegeladen in 15 Minuten | perfekt für zwischendurch"
-  },
-  {
-    "art": "Yoga",
-    "c": "Mady Morrison",
-    "d": 15,
-    "id": "4snu7NxD4nM",
-    "t": "15 Min. Morning Stretch | wake up & feel amazing | the best way to start your day!"
-  },
-  {
-    "art": "Yoga",
-    "c": "Mady Morrison",
     "d": 10,
     "id": "ihba9Lw0tv4",
     "t": "10 Minute Morning Stretch for every day | Simple routine to wake up & feel good"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 15,
+    "id": "NpDD8Sh1hzE",
+    "t": "15 Min. Yoga Routine für alle Level | Rücken kräftigen und Schultern lockern | Yoga Refresh"
   },
   {
     "art": "Yoga",
@@ -30,16 +23,16 @@
   {
     "art": "Yoga",
     "c": "Mady Morrison",
-    "d": 20,
-    "id": "kApPj-mNcO4",
-    "t": "Yoga Beweglichkeit, Dehnung, Entspannung | Hüften öffnen & Rücken mobilisieren | Zur Ruhe kommen"
+    "d": 15,
+    "id": "4snu7NxD4nM",
+    "t": "15 Min. Morning Stretch | wake up & feel amazing | the best way to start your day!"
   },
   {
     "art": "Yoga",
     "c": "Mady Morrison",
-    "d": 20,
-    "id": "X2GxGhOcjQ0",
-    "t": "Yoga Ganzkörper Flow | 20 Min. Workout Mittelstufe | Fühl dich stark, fit & selbstbewusst!"
+    "d": 15,
+    "id": "xOJeRLc66r4",
+    "t": "Yoga Energy Flow | wach & energiegeladen in 15 Minuten | perfekt für zwischendurch"
   },
   {
     "art": "Yoga",
@@ -47,6 +40,13 @@
     "d": 18,
     "id": "-btuQsCiyfc",
     "t": "Yoga für den Morgen | sanft belebend und aktivierend | 18 Min. Rise & Shine (auch für Anfänger)"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 20,
+    "id": "kApPj-mNcO4",
+    "t": "Yoga Beweglichkeit, Dehnung, Entspannung | Hüften öffnen & Rücken mobilisieren | Zur Ruhe kommen"
   },
   {
     "art": "Yoga",
@@ -58,16 +58,16 @@
   {
     "art": "Yoga",
     "c": "Mady Morrison",
-    "d": 25,
-    "id": "LOi9B2Syej8",
-    "t": "Yoga Ganzkörper Flow | Stark, Konzentriert & Selbstbewusst | 25 Minuten Mittelstufe"
+    "d": 20,
+    "id": "X2GxGhOcjQ0",
+    "t": "Yoga Ganzkörper Flow | 20 Min. Workout Mittelstufe | Fühl dich stark, fit & selbstbewusst!"
   },
   {
     "art": "Yoga",
     "c": "Mady Morrison",
     "d": 25,
-    "id": "4CBKYS9ywBQ",
-    "t": "Yoga Flow für Energie, Kraft & Beweglichkeit | wach und klar | Joshua Tree"
+    "id": "xfHSq-Fmm50",
+    "t": "Yoga Ganzkörper Workout | stark, flexibel & ästhetisch | 25 Min. Strong Elegance Flow"
   },
   {
     "art": "Yoga",
@@ -75,6 +75,13 @@
     "d": 25,
     "id": "xUHza6YKRfk",
     "t": "Yoga für Entspannung & Beweglichkeit | Innere Ruhe finden + Verspannungen im Rücken lösen | Slow Yoga"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 25,
+    "id": "LOi9B2Syej8",
+    "t": "Yoga Ganzkörper Flow | Stark, Konzentriert & Selbstbewusst | 25 Minuten Mittelstufe"
   },
   {
     "art": "Yoga",
@@ -93,9 +100,23 @@
   {
     "art": "Yoga",
     "c": "Mady Morrison",
+    "d": 25,
+    "id": "4CBKYS9ywBQ",
+    "t": "Yoga Flow für Energie, Kraft & Beweglichkeit | wach und klar | Joshua Tree"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
     "d": 30,
-    "id": "iF9h0WwXWk8",
-    "t": "Yoga für Beweglichkeit | Stretch & Flow | Tiefe Dehnungen und neue Haltungen | Mittelstufe"
+    "id": "rjbrTr_EbB4",
+    "t": "Yoga Ganzkörper Flow | Bauch, Beine & Balance | 30 Minuten für Kraft & Stabilität"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 30,
+    "id": "JEEUXPk04oo",
+    "t": "Yoga Ganzkörper Flow | 30 kraftvolle Min. für einen starken & flexiblen Körper | Flow & Fly"
   },
   {
     "art": "Yoga",
@@ -115,8 +136,22 @@
     "art": "Yoga",
     "c": "Mady Morrison",
     "d": 30,
-    "id": "JCsJgYI2vys",
-    "t": "Yoga für Rücken, Brust & Wirbelsäule | Körper mobilisieren | 30 Minuten zum wach werden & loslassen!"
+    "id": "U2OcR9yGzas",
+    "t": "Yoga Ganzkörper Flow für Kraft, Energie und Beweglichkeit | 30 Minuten | macht happy & wach"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 30,
+    "id": "iF9h0WwXWk8",
+    "t": "Yoga für Beweglichkeit | Stretch & Flow | Tiefe Dehnungen und neue Haltungen | Mittelstufe"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 30,
+    "id": "cA1jIxcAi_o",
+    "t": "Power Yoga Vinyasa Flow | 30 Min. Ganzkörper Programm für Mittelstufe & Fortgeschrittene"
   },
   {
     "art": "Yoga",
@@ -129,22 +164,8 @@
     "art": "Yoga",
     "c": "Mady Morrison",
     "d": 30,
-    "id": "cA1jIxcAi_o",
-    "t": "Power Yoga Vinyasa Flow | 30 Min. Ganzkörper Programm für Mittelstufe & Fortgeschrittene"
-  },
-  {
-    "art": "Yoga",
-    "c": "Mady Morrison",
-    "d": 35,
-    "id": "23zxyx6DASc",
-    "t": "Yoga Ganzkörper Flow für Energie, Fokus & Gute Laune | 35 Min. Mallorca Sunshine Yoga"
-  },
-  {
-    "art": "Yoga",
-    "c": "Mady Morrison",
-    "d": 30,
-    "id": "U2OcR9yGzas",
-    "t": "Yoga Ganzkörper Flow für Kraft, Energie und Beweglichkeit | 30 Minuten | macht happy & wach"
+    "id": "JCsJgYI2vys",
+    "t": "Yoga für Rücken, Brust & Wirbelsäule | Körper mobilisieren | 30 Minuten zum wach werden & loslassen!"
   },
   {
     "art": "Yoga",
@@ -156,37 +177,16 @@
   {
     "art": "Yoga",
     "c": "Mady Morrison",
-    "d": 60,
-    "id": "oj-hxr2bZkI",
-    "t": "Yoga Flow 60 Minuten | Ganzkörper Programm | Selbstbewusstsein und innere Stärke"
+    "d": 35,
+    "id": "23zxyx6DASc",
+    "t": "Yoga Ganzkörper Flow für Energie, Fokus & Gute Laune | 35 Min. Mallorca Sunshine Yoga"
   },
   {
     "art": "Yoga",
     "c": "Mady Morrison",
-    "d": 15,
-    "id": "NpDD8Sh1hzE",
-    "t": "15 Min. Yoga Routine für alle Level | Rücken kräftigen und Schultern lockern | Yoga Refresh"
-  },
-  {
-    "art": "Yoga",
-    "c": "Mady Morrison",
-    "d": 25,
-    "id": "xfHSq-Fmm50",
-    "t": "Yoga Ganzkörper Workout | stark, flexibel & ästhetisch | 25 Min. Strong Elegance Flow"
-  },
-  {
-    "art": "Yoga",
-    "c": "Mady Morrison",
-    "d": 30,
-    "id": "JEEUXPk04oo",
-    "t": "Yoga Ganzkörper Flow | 30 kraftvolle Min. für einen starken & flexiblen Körper | Flow & Fly"
-  },
-  {
-    "art": "Yoga",
-    "c": "Mady Morrison",
-    "d": 30,
-    "id": "rjbrTr_EbB4",
-    "t": "Yoga Ganzkörper Flow | Bauch, Beine & Balance | 30 Minuten für Kraft & Stabilität"
+    "d": 45,
+    "id": "uaWBg9mPDVE",
+    "t": "Yoga Ganzkörper Flow | Unterkörper stärken & Wirbelsäule mobilisieren | 45 Min. ROOT TO RISE"
   },
   {
     "art": "Yoga",
@@ -198,9 +198,16 @@
   {
     "art": "Yoga",
     "c": "Mady Morrison",
-    "d": 45,
-    "id": "uaWBg9mPDVE",
-    "t": "Yoga Ganzkörper Flow | Unterkörper stärken & Wirbelsäule mobilisieren | 45 Min. ROOT TO RISE"
+    "d": 60,
+    "id": "oj-hxr2bZkI",
+    "t": "Yoga Flow 60 Minuten | Ganzkörper Programm | Selbstbewusstsein und innere Stärke"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
+    "d": 15,
+    "id": "63h5AlK74F4",
+    "t": "15 min. Guter Dinge durch Morgen - Gymnastik | Frühsport für Kopf & Körper, im Stehen, ohne Geräte"
   },
   {
     "art": "Fitness",
@@ -220,8 +227,8 @@
     "art": "Fitness",
     "c": "Gabi Fastner",
     "d": 15,
-    "id": "63h5AlK74F4",
-    "t": "15 min. Guter Dinge durch Morgen - Gymnastik | Frühsport für Kopf & Körper, im Stehen, ohne Geräte"
+    "id": "cZ6jsJsN6B4",
+    "t": "15 min. schnelles Figurtraining | easy Workout im Stehen, ohne Geräte"
   },
   {
     "art": "Fitness",
@@ -233,30 +240,9 @@
   {
     "art": "Fitness",
     "c": "Gabi Fastner",
-    "d": 15,
-    "id": "cZ6jsJsN6B4",
-    "t": "15 min. schnelles Figurtraining | easy Workout im Stehen, ohne Geräte"
-  },
-  {
-    "art": "Fitness",
-    "c": "Gabi Fastner",
-    "d": 20,
-    "id": "p20P43VSiag",
-    "t": "20 min. funktionelles Gesundheitstraining | ohne Geräte, im Stehen"
-  },
-  {
-    "art": "Fitness",
-    "c": "Gabi Fastner",
     "d": 20,
     "id": "uGorGULT8Nc",
     "t": "In nur 20 min. Fitness und Figur verbessern | ohne Geräte für Fortgeschrittene"
-  },
-  {
-    "art": "Fitness",
-    "c": "Gabi Fastner",
-    "d": 20,
-    "id": "qcuiCPaSEc8",
-    "t": "20 min. Grundlagen-Ausdauer | Fettverbrennung und Cardio, beliebig erweiterbar, ohne Geräte"
   },
   {
     "art": "Fitness",
@@ -275,9 +261,23 @@
   {
     "art": "Fitness",
     "c": "Gabi Fastner",
+    "d": 20,
+    "id": "p20P43VSiag",
+    "t": "20 min. funktionelles Gesundheitstraining | ohne Geräte, im Stehen"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
+    "d": 20,
+    "id": "qcuiCPaSEc8",
+    "t": "20 min. Grundlagen-Ausdauer | Fettverbrennung und Cardio, beliebig erweiterbar, ohne Geräte"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
     "d": 25,
-    "id": "OHKmC1lB44E",
-    "t": "25 min. Energy-Training | High Impact, ohne Geräte, im Stehen"
+    "id": "jDxWhuwaMoM",
+    "t": "25 min. Vormittags Training | Kräftigung und Figur | ohne Geräte"
   },
   {
     "art": "Fitness",
@@ -297,22 +297,15 @@
     "art": "Fitness",
     "c": "Gabi Fastner",
     "d": 25,
-    "id": "ZgIUdUvU-Ec",
-    "t": "25 min. Herz-Kreislauf-Training | ohne Geräte, im Stehen"
+    "id": "OHKmC1lB44E",
+    "t": "25 min. Energy-Training | High Impact, ohne Geräte, im Stehen"
   },
   {
     "art": "Fitness",
     "c": "Gabi Fastner",
     "d": 25,
-    "id": "jDxWhuwaMoM",
-    "t": "25 min. Vormittags Training | Kräftigung und Figur | ohne Geräte"
-  },
-  {
-    "art": "Fitness",
-    "c": "Gabi Fastner",
-    "d": 30,
-    "id": "YiBFpXj342E",
-    "t": "30 min. die Hälfte reicht! Ganzkörper - Figur - Workout in kurzer Zeit, ohne Geräte"
+    "id": "ZgIUdUvU-Ec",
+    "t": "25 min. Herz-Kreislauf-Training | ohne Geräte, im Stehen"
   },
   {
     "art": "Fitness",
@@ -325,8 +318,15 @@
     "art": "Fitness",
     "c": "Gabi Fastner",
     "d": 30,
-    "id": "ag0XWAebVtQ",
-    "t": "30 min. kniefreundliches Ganzkörper-Workout | ohne Geräte"
+    "id": "15erd3ILI-A",
+    "t": "30 min. Figur - WORKOUT | formen, straffen, kräftigen | ohne Geräte"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
+    "d": 30,
+    "id": "YiBFpXj342E",
+    "t": "30 min. die Hälfte reicht! Ganzkörper - Figur - Workout in kurzer Zeit, ohne Geräte"
   },
   {
     "art": "Fitness",
@@ -339,8 +339,8 @@
     "art": "Fitness",
     "c": "Gabi Fastner",
     "d": 30,
-    "id": "15erd3ILI-A",
-    "t": "30 min. Figur - WORKOUT | formen, straffen, kräftigen | ohne Geräte"
+    "id": "ag0XWAebVtQ",
+    "t": "30 min. kniefreundliches Ganzkörper-Workout | ohne Geräte"
   },
   {
     "art": "Fitness",
@@ -348,13 +348,6 @@
     "d": 40,
     "id": "zUjQbFkf62Y",
     "t": "40 min. Faszien Fitness | ohne Geräte, für Fortgeschrittene"
-  },
-  {
-    "art": "Fitness",
-    "c": "Gabi Fastner",
-    "d": 40,
-    "id": "S14Zh8IUDVs",
-    "t": "40 min. Workout für Faszien und Figur | ohne Geräte"
   },
   {
     "art": "Fitness",
@@ -373,23 +366,16 @@
   {
     "art": "Fitness",
     "c": "Gabi Fastner",
+    "d": 40,
+    "id": "S14Zh8IUDVs",
+    "t": "40 min. Workout für Faszien und Figur | ohne Geräte"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
     "d": 45,
     "id": "arj-U9o2oXM",
     "t": "45 min. Faszien, Körpermitte, Stretching | ohne Geräte, im Stehen"
-  },
-  {
-    "art": "Meditation",
-    "c": "Ajahn Brahm Miniclips",
-    "d": 29,
-    "id": "UX-fH2yh_PQ",
-    "t": "30 min Beginners Guided Meditation by Ajahn Brahm"
-  },
-  {
-    "art": "Meditation",
-    "c": "Maha Satipatthana Buddhist Society",
-    "d": 20,
-    "id": "Brp03Z4zrGM",
-    "t": "Ajahn Brahm Guided Meditation 20min"
   },
   {
     "art": "Meditation",
@@ -400,17 +386,45 @@
   },
   {
     "art": "Meditation",
-    "c": "Buddhist Society of Western Australia",
-    "d": 94,
-    "id": "viAq-ltPTXc",
-    "t": "Guided Meditation | Ajahn Brahm | 1 June 2024"
+    "c": "Maha Satipatthana Buddhist Society",
+    "d": 20,
+    "id": "Brp03Z4zrGM",
+    "t": "Ajahn Brahm Guided Meditation 20min"
   },
   {
     "art": "Meditation",
     "c": "Buddhist Society of Western Australia",
-    "d": 90,
-    "id": "PVOHNAJZVwE",
-    "t": "Guided Meditation | Ajahn Brahm | 15 February 2025"
+    "d": 28,
+    "id": "X47Z0T9OCBo",
+    "t": "Friday Night Guided Meditation | Ajahn Brahm | 13 March 2026"
+  },
+  {
+    "art": "Meditation",
+    "c": "Ajahn Brahm Miniclips",
+    "d": 29,
+    "id": "UX-fH2yh_PQ",
+    "t": "30 min Beginners Guided Meditation by Ajahn Brahm"
+  },
+  {
+    "art": "Meditation",
+    "c": "Buddhist Society of Western Australia",
+    "d": 61,
+    "id": "45lYuXK3K9Q",
+    "t": "Guided Meditation | Ajahn Brahm | 22 June 2024"
+  },
+  {
+    "art": "Meditation",
+    "c": "Buddhist Society of Western Australia",
+    "d": 65,
+    "id": "wp63nFkiu-g",
+    "t": "Guided Meditation | Ajahn Brahm | 16 November 2024"
+  },
+  {
+    "art": "Meditation",
+    "c": "Buddhist Society of Western Australia",
+    "d": 70,
+    "id": "jl21xT2buk0",
+    "t": "Guided Meditation | Ajahn Brahm | 13 April 2024"
   },
   {
     "art": "Meditation",
@@ -436,29 +450,15 @@
   {
     "art": "Meditation",
     "c": "Buddhist Society of Western Australia",
-    "d": 65,
-    "id": "wp63nFkiu-g",
-    "t": "Guided Meditation | Ajahn Brahm | 16 November 2024"
+    "d": 90,
+    "id": "PVOHNAJZVwE",
+    "t": "Guided Meditation | Ajahn Brahm | 15 February 2025"
   },
   {
     "art": "Meditation",
     "c": "Buddhist Society of Western Australia",
-    "d": 70,
-    "id": "jl21xT2buk0",
-    "t": "Guided Meditation | Ajahn Brahm | 13 April 2024"
-  },
-  {
-    "art": "Meditation",
-    "c": "Buddhist Society of Western Australia",
-    "d": 61,
-    "id": "45lYuXK3K9Q",
-    "t": "Guided Meditation | Ajahn Brahm | 22 June 2024"
-  },
-  {
-    "art": "Meditation",
-    "c": "Buddhist Society of Western Australia",
-    "d": 28,
-    "id": "X47Z0T9OCBo",
-    "t": "Friday Night Guided Meditation | Ajahn Brahm | 13 March 2026"
+    "d": 94,
+    "id": "viAq-ltPTXc",
+    "t": "Guided Meditation | Ajahn Brahm | 1 June 2024"
   }
 ]
