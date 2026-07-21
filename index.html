@@ -6,6 +6,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Bewegung">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon.png">
 <title>Yoga · Fitness · Meditation</title>
 <style>
   :root{
@@ -168,7 +170,8 @@
 
 <script>
 // d = Dauer in Minuten, oder null (noch keine Zeit hinterlegt -> zählt immer als passend)
-const VIDEOS = [
+// Diese Liste ist die eingebaute Fallback-Version. Liegt eine videos.json daneben, wird diese genutzt.
+let VIDEOS = [
   // ---------- YOGA ----------
   {art:"Yoga",c:"Mady Morrison",d:15,id:"xOJeRLc66r4",t:"Yoga Energy Flow | wach & energiegeladen in 15 Minuten | perfekt für zwischendurch"},
   {art:"Yoga",c:"Mady Morrison",d:15,id:"4snu7NxD4nM",t:"15 Min. Morning Stretch | wake up & feel amazing | the best way to start your day!"},
@@ -227,22 +230,36 @@ const VIDEOS = [
   {art:"Fitness",c:"Gabi Fastner",d:40,id:"KInCMicX6Uw",t:"40 min. Faszien Gymnastik ohne Geräte"},
   {art:"Fitness",c:"Gabi Fastner",d:45,id:"arj-U9o2oXM",t:"45 min. Faszien, Körpermitte, Stretching | ohne Geräte, im Stehen"},
 
-  // ---------- MEDITATION (Ajahn Brahm) - noch keine Dauer ----------
-  {art:"Meditation",c:"Ajahn Brahm Miniclips",d:null,id:"UX-fH2yh_PQ",t:"30 min Beginners Guided Meditation by Ajahn Brahm"},
-  {art:"Meditation",c:"Maha Satipatthana Buddhist Society",d:null,id:"Brp03Z4zrGM",t:"Ajahn Brahm Guided Meditation 20min"},
-  {art:"Meditation",c:"BSWA Retreats 2011-15 & Media",d:null,id:"-3i4SBmY204",t:"guided meditation - Ajahn Brahm"},
-  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"viAq-ltPTXc",t:"Guided Meditation | Ajahn Brahm | 1 June 2024"},
-  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"PVOHNAJZVwE",t:"Guided Meditation | Ajahn Brahm | 15 February 2025"},
-  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"qTkXE1w6uOU",t:"Guided Meditation | Ajahn Brahm | 1 March 2025"},
-  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"hffUqbnxZMA",t:"Guided Meditation | Ajahn Brahm | 12 January 2019"},
-  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"SolfVZ5oE5I",t:"Guided Meditation | Ajahn Brahm | 23 March 2024"},
-  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"wp63nFkiu-g",t:"Guided Meditation | Ajahn Brahm | 16 November 2024"},
-  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"jl21xT2buk0",t:"Guided Meditation | Ajahn Brahm | 13 April 2024"},
-  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"45lYuXK3K9Q",t:"Guided Meditation | Ajahn Brahm | 22 June 2024"},
-  {art:"Meditation",c:"Buddhist Society of Western Australia",d:null,id:"X47Z0T9OCBo",t:"Friday Night Guided Meditation | Ajahn Brahm | 13 March 2026"}
+  // ---------- MEDITATION (Ajahn Brahm) ----------
+  {art:"Meditation",c:"Ajahn Brahm Miniclips",d:29,id:"UX-fH2yh_PQ",t:"30 min Beginners Guided Meditation by Ajahn Brahm"},
+  {art:"Meditation",c:"Maha Satipatthana Buddhist Society",d:20,id:"Brp03Z4zrGM",t:"Ajahn Brahm Guided Meditation 20min"},
+  {art:"Meditation",c:"BSWA Retreats 2011-15 & Media",d:14,id:"-3i4SBmY204",t:"guided meditation - Ajahn Brahm"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:94,id:"viAq-ltPTXc",t:"Guided Meditation | Ajahn Brahm | 1 June 2024"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:90,id:"PVOHNAJZVwE",t:"Guided Meditation | Ajahn Brahm | 15 February 2025"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:70,id:"qTkXE1w6uOU",t:"Guided Meditation | Ajahn Brahm | 1 March 2025"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:77,id:"hffUqbnxZMA",t:"Guided Meditation | Ajahn Brahm | 12 January 2019"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:88,id:"SolfVZ5oE5I",t:"Guided Meditation | Ajahn Brahm | 23 March 2024"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:65,id:"wp63nFkiu-g",t:"Guided Meditation | Ajahn Brahm | 16 November 2024"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:70,id:"jl21xT2buk0",t:"Guided Meditation | Ajahn Brahm | 13 April 2024"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:61,id:"45lYuXK3K9Q",t:"Guided Meditation | Ajahn Brahm | 22 June 2024"},
+  {art:"Meditation",c:"Buddhist Society of Western Australia",d:28,id:"X47Z0T9OCBo",t:"Friday Night Guided Meditation | Ajahn Brahm | 13 March 2026"}
 ];
 
-const QUICK = [15,20,25,30,45,60];
+// ---- optionale Live-Daten aus Notion ----
+// Sobald eine videos.json neben dieser Datei liegt (z.B. automatisch aus Notion erzeugt),
+// nutzt die App diese Daten - ganz ohne index.html neu hochzuladen. Fehlt sie, greift die Liste oben.
+const DATA_URL = "./videos.json";
+async function loadLive(){
+  if(!DATA_URL) return;
+  try{
+    const r = await fetch(DATA_URL, {cache:"no-store"});
+    if(!r.ok) return;
+    const data = await r.json();
+    if(Array.isArray(data) && data.length){ VIDEOS = data; updateProgress(); }
+  }catch(e){ /* keine videos.json erreichbar -> eingebaute Liste wird genutzt */ }
+}
+
+const QUICK = [15,20,25,30,45,60,90];
 const ART_META = {
   Yoga:{icon:"🧘🏻",cls:"yoga"},
   Fitness:{icon:"💪",cls:"fitness"},
@@ -303,12 +320,9 @@ function selectArt(art){
   pill.className='pill '+m.cls;
   pill.textContent=m.icon+' '+art;
 
-  // Meditation: keine Zeiten -> Zeitauswahl ausblenden
-  const noTime = (art==="Meditation");
-  timeBlock.style.display = noTime ? 'none' : 'block';
-  medNote.style.display = noTime ? 'block' : 'none';
-
-  subtitle.textContent = noTime ? 'Tippe auf Video auswählen' : 'Wie viel Zeit hast du?';
+  timeBlock.style.display = 'block';
+  medNote.style.display = 'none';
+  subtitle.textContent = 'Wie viel Zeit hast du?';
   screenArt.classList.remove('active');
   screenTime.classList.add('active');
   updateProgress();
@@ -331,7 +345,7 @@ function eligible(art,time){
 
 function pick(){
   document.getElementById('err').textContent='';
-  const needTime = (currentArt!=="Meditation");
+  const needTime = true;
   if(needTime && (!selectedTime || selectedTime<1)){
     document.getElementById('err').textContent='Bitte zuerst eine Zeit wählen.';
     return;
@@ -380,7 +394,7 @@ function showResult(v){
 function updateProgress(){
   const p=document.getElementById('progress');
   if(!currentArt){ p.innerHTML=''; return; }
-  const needTime = (currentArt!=="Meditation");
+  const needTime = true;
   if(needTime && !selectedTime){
     const total=VIDEOS.filter(v=>v.art===currentArt).length;
     p.innerHTML=total+' '+currentArt+'-Videos in deiner Sammlung.'; return;
@@ -407,6 +421,9 @@ document.getElementById('resetBtn').onclick=()=>{
   updateProgress();
   toast('Verlauf zurückgesetzt.');
 };
+
+// Live-Daten laden (falls videos.json vorhanden)
+loadLive();
 </script>
 </body>
 </html>
