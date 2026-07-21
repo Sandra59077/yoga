@@ -334,12 +334,22 @@ document.getElementById('backBtn').onclick=()=>{
 };
 
 // ---- selection core ----
+// Zeitfenster: die gewählte Zeit ist die Obergrenze, die nächstkleinere Stufe die Untergrenze.
+// Beispiel 25 -> über 20 bis 25 Min. Die höchste Stufe (90) hat keine Obergrenze (auch > 90 Min).
+const EDGES = [15,20,25,30,45,60,90];
+function band(time){
+  let lower = 0;
+  for(const e of EDGES){ if(e < time) lower = e; }
+  const upper = (time >= 90) ? Infinity : time;
+  return {lower, upper};
+}
 function eligible(art,time){
+  if(time==null) return VIDEOS.filter(v=>v.art===art);
+  const {lower,upper} = band(time);
   return VIDEOS.filter(v=>{
     if(v.art!==art) return false;
-    if(v.d==null) return true;          // ohne Dauer -> immer passend
-    if(time==null) return true;
-    return v.d<=time;
+    if(v.d==null) return true;          // ohne Dauer -> immer passend (Fallback)
+    return v.d>lower && v.d<=upper;
   });
 }
 
@@ -352,7 +362,7 @@ function pick(){
   }
   const pool = eligible(currentArt, needTime?selectedTime:null);
   if(pool.length===0){
-    document.getElementById('err').textContent='Kein Video passt in '+selectedTime+' Min (kürzestes ist 10 Min).';
+    document.getElementById('err').textContent='Kein Video in diesem Zeitfenster – wähle eine andere Zeit.';
     return;
   }
   let watched = getWatched(currentArt);
@@ -377,10 +387,7 @@ function pick(){
 
   showResult(chosen);
   updateProgress();
-
-  const url='https://youtu.be/'+chosen.id;
-  document.getElementById('rOpen').href=url;
-  window.open(url,'_blank');
+  // Kein automatisches Öffnen mehr - der Nutzer öffnet das Video selbst per Button.
 }
 
 function showResult(v){
@@ -403,7 +410,8 @@ function updateProgress(){
   if(pool.length===0){ p.innerHTML=''; return; }
   const watched=getWatched(currentArt);
   const seen=pool.filter(v=>watched.includes(v.id)).length;
-  const scope = needTime ? ('für ≤ '+selectedTime+' Min') : ('('+currentArt+')');
+  const bnd=band(selectedTime);
+  const scope = (bnd.upper===Infinity) ? ('über '+bnd.lower+' Min') : ('Zeitfenster '+bnd.lower+'–'+bnd.upper+' Min');
   p.innerHTML=scope+': <b>'+seen+' von '+pool.length+'</b> gesehen.<br>Wiederholung erst, wenn alle durch sind.';
 }
 
