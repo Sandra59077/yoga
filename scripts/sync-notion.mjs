@@ -12,6 +12,13 @@ if (!TOKEN) {
 }
 
 const API = `https://api.notion.com/v1/databases/${DB_ID}/query`;
+const HEADERS = {
+  "Authorization": `Bearer ${TOKEN}`,
+  "Notion-Version": "2022-06-28",
+  "Content-Type": "application/json"
+};
+
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // YouTube-Video-ID aus verschiedenen URL-Formen ziehen
 function ytId(url) {
@@ -27,20 +34,37 @@ function propByType(props, type) {
   return null;
 }
 
+// Eine Notion-Anfrage mit automatischen Wiederholungen bei Server-/Timeout-Fehlern (5xx, 429, Netzwerk)
+async function notionQuery(body, tries = 5) {
+  let lastErr;
+  for (let i = 1; i <= tries; i++) {
+    try {
+      const res = await fetch(API, { method: "POST", headers: HEADERS, body: JSON.stringify(body) });
+      if (res.ok) return await res.json();
+      const text = await res.text();
+      if (res.status >= 500 || res.status === 429) {
+        // voruebergehend -> erneut versuchen
+        lastErr = new Error(`Notion API ${res.status} (Versuch ${i}/${tries})`);
+        console.warn(lastErr.message + " - neuer Versuch...");
+      } else {
+        // echter Fehler (z. B. 401/404) -> sofort abbrechen
+        throw new Error(`Notion API ${res.status}: ${text}`);
+      }
+    } catch (e) {
+      // Netzwerkfehler -> auch erneut versuchen
+      lastErr = e;
+      console.warn(`Netzwerk-/Serverproblem (Versuch ${i}/${tries}): ${e.message}`);
+    }
+    if (i < tries) await sleep(3000 * i); // 3s, 6s, 9s, 12s
+  }
+  throw lastErr;
+}
+
 async function queryAll() {
   let results = [], cursor;
   do {
-    const res = await fetch(API, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${TOKEN}`,
-        "Notion-Version": "2022-06-28",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(cursor ? { start_cursor: cursor, page_size: 100 } : { page_size: 100 })
-    });
-    if (!res.ok) throw new Error(`Notion API ${res.status}: ${await res.text()}`);
-    const j = await res.json();
+    const body = cursor ? { start_cursor: cursor, page_size: 100 } : { page_size: 100 };
+    const j = await notionQuery(body);
     results = results.concat(j.results);
     cursor = j.has_more ? j.next_cursor : undefined;
   } while (cursor);
