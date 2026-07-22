@@ -1,0 +1,20 @@
+name: Playlist -> Notion (einmaliger Import)
+
+on:
+  workflow_dispatch:   # nur manuell ueber den "Run workflow"-Knopf
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Playlist-Videos unter 30 Min nach Notion importieren
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: node scripts/import-playlist.mjs
