@@ -2,7 +2,7 @@ name: Sync Notion -> videos.json
 
 on:
   schedule:
-    - cron: '0 * * * *'      # jede volle Stunde
+    - cron: '0 5 * * *'      # einmal taeglich
   workflow_dispatch:          # Knopf "Run workflow" fuer sofortige Aktualisierung
   push:
     branches: [ main ]
