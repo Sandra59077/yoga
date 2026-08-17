@@ -2,13 +2,6 @@
   {
     "art": "Yoga",
     "c": "Mady Morrison",
-    "d": 10,
-    "id": "ihba9Lw0tv4",
-    "t": "10 Minute Morning Stretch for every day | Simple routine to wake up & feel good"
-  },
-  {
-    "art": "Yoga",
-    "c": "Mady Morrison",
     "d": 15,
     "id": "NpDD8Sh1hzE",
     "t": "15 Min. Yoga Routine für alle Level | Rücken kräftigen und Schultern lockern | Yoga Refresh"
@@ -24,15 +17,29 @@
     "art": "Yoga",
     "c": "Mady Morrison",
     "d": 15,
-    "id": "4snu7NxD4nM",
-    "t": "15 Min. Morning Stretch | wake up & feel amazing | the best way to start your day!"
+    "id": "xOJeRLc66r4",
+    "t": "Yoga Energy Flow | wach & energiegeladen in 15 Minuten | perfekt für zwischendurch"
   },
   {
     "art": "Yoga",
     "c": "Mady Morrison",
-    "d": 15,
-    "id": "xOJeRLc66r4",
-    "t": "Yoga Energy Flow | wach & energiegeladen in 15 Minuten | perfekt für zwischendurch"
+    "d": 18,
+    "id": "Nm6RlQiwvgc",
+    "t": "Yoga Morgen-Routine | Wach & Energiegeladen | Der perfekte Start in den Tag"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 18,
+    "id": "zMQ1EIIz6Rc",
+    "t": "Yoga Bauch Workout | Core stärken | Nacken entspannen | Intensiv & Effektiv"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 18,
+    "id": "SAKuq1a1ZKg",
+    "t": "Geführte Meditation für Innere Ruhe & Stressabbau | Entspannung für jeden Tag ✨"
   },
   {
     "art": "Yoga",
@@ -44,9 +51,51 @@
   {
     "art": "Yoga",
     "c": "Mady Morrison",
+    "d": 19,
+    "id": "_i32hVOPlTA",
+    "t": "Yoga Abend Bett Routine | Besser Schlafen + Atemübung"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 19,
+    "id": "AgkawTO_bBA",
+    "t": "Yoga Twist & Detox Flow | Neue Kraft & Energie tanken in 15 Minuten"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
     "d": 20,
-    "id": "kApPj-mNcO4",
-    "t": "Yoga Beweglichkeit, Dehnung, Entspannung | Hüften öffnen & Rücken mobilisieren | Zur Ruhe kommen"
+    "id": "B3G-NSuuxws",
+    "t": "Yoga Arme Schultern Straffen - Anfänger + Fortgeschrittene - 20 Min Home Workout"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 20,
+    "id": "1vVwY60_pyk",
+    "t": "Yoga & Meditation Morgenroutine | Selbstbewusst, Positiv & Dankbar in deinen Tag starten!"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 20,
+    "id": "SPEBWOFleOI",
+    "t": "20 Min. Pilates for Beginners | Full Body Workout for everyday (No Equipment)"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 20,
+    "id": "VW4d7Lqoz8Q",
+    "t": "20 Min. Pilates Workout for Better Posture | Daily Routine for a Strong Back & Healthy Spine"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 20,
+    "id": "e01Lfv0CD6k",
+    "t": "20 Min. Yoga Ganzkörper Flow | Kraft, Beweglichkeit, Balance | Mittelstufe & sportliche Anfänger"
   },
   {
     "art": "Yoga",
@@ -65,16 +114,44 @@
   {
     "art": "Yoga",
     "c": "Mady Morrison",
-    "d": 25,
-    "id": "xfHSq-Fmm50",
-    "t": "Yoga Ganzkörper Workout | stark, flexibel & ästhetisch | 25 Min. Strong Elegance Flow"
+    "d": 22,
+    "id": "hJVN8PjavrE",
+    "t": "Yoga Morgenroutine für alle Level | Herzöffner & Balance | 20 Min. Perfekter Morgen ☀️🌊"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 23,
+    "id": "jUa00O7whXg",
+    "t": "Anfänger HIIT Workout | Fatburner Fitness für Zuhause | Mit Warm Up und Cool Down"
   },
   {
     "art": "Yoga",
     "c": "Mady Morrison",
     "d": 25,
-    "id": "xUHza6YKRfk",
-    "t": "Yoga für Entspannung & Beweglichkeit | Innere Ruhe finden + Verspannungen im Rücken lösen | Slow Yoga"
+    "id": "BnpArk7M6wg",
+    "t": "Yoga Power Flow | Bauch Beine Po | Effektiv & Intensiv"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 25,
+    "id": "bno1z2-Hg-4",
+    "t": "Power Vinyasa Yoga für Kraft & Willensstärke | 25 Minuten Home Workout"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 25,
+    "id": "BTS2SzBMhOE",
+    "t": "Kraftvoller Yoga Vinyasa Flow | dynamisch und geschmeidig fließen | 25 Min. Yoga Workout Mittelstufe"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 25,
+    "id": "xfHSq-Fmm50",
+    "t": "Yoga Ganzkörper Workout | stark, flexibel & ästhetisch | 25 Min. Strong Elegance Flow"
   },
   {
     "art": "Yoga",
@@ -103,6 +180,20 @@
     "d": 25,
     "id": "4CBKYS9ywBQ",
     "t": "Yoga Flow für Energie, Kraft & Beweglichkeit | wach und klar | Joshua Tree"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 26,
+    "id": "nCOgtI7dCUk",
+    "t": "Summerbody Vinyasa Yoga Flow | Ganzkörper Workout für für einen straffen und trainierten Körper"
+  },
+  {
+    "art": "Yoga",
+    "c": "Mady Morrison",
+    "d": 30,
+    "id": "TfsoOcnrJtM",
+    "t": "Yoga Ganzkörper Flow | Dynamisch & Kraftvoll | 30 Min. Yoga Workout Mittelstufe | Dynamic Power Flow"
   },
   {
     "art": "Yoga",
@@ -138,13 +229,6 @@
     "d": 30,
     "id": "U2OcR9yGzas",
     "t": "Yoga Ganzkörper Flow für Kraft, Energie und Beweglichkeit | 30 Minuten | macht happy & wach"
-  },
-  {
-    "art": "Yoga",
-    "c": "Mady Morrison",
-    "d": 30,
-    "id": "iF9h0WwXWk8",
-    "t": "Yoga für Beweglichkeit | Stretch & Flow | Tiefe Dehnungen und neue Haltungen | Mittelstufe"
   },
   {
     "art": "Yoga",
@@ -241,6 +325,76 @@
     "art": "Fitness",
     "c": "Gabi Fastner",
     "d": 20,
+    "id": "87WP28bP4aQ",
+    "t": "20 min. Bauch schnell weg! Training | straffe Körpermitte, im Stehen, ohne Geräte"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
+    "d": 20,
+    "id": "GPKeL0R2NL0",
+    "t": "20 min. Bauch Beine Po | ohne Geräte"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
+    "d": 20,
+    "id": "itluQ4g8ubQ",
+    "t": "20 min. Bauch und Arme straffen | effektives, einfaches Home-Figur-Workout im Stehen, ohne Geräte"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
+    "d": 20,
+    "id": "mQ0iHhZnCEA",
+    "t": "20 min. Ganzkörper - Kräftigung | Arme, Beine, Bauch, Rücken und Brust | im Stehen, ohne Geräte"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
+    "d": 20,
+    "id": "BClJLF42nMk",
+    "t": "20 min. starker Rücken - flacher Bauch | Körpermitte - Workout, ohne Geräte"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
+    "d": 20,
+    "id": "nzaXV2VWd0o",
+    "t": "20 min. Bauch und Rücken formen und kräftigen | Körpermitte - Workout im Stehen, ohne Geräte"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
+    "d": 20,
+    "id": "_oqQN_IgnpI",
+    "t": "20 min. Figur Flow | leichtes, effektives Workout im Stehen, Training ohne Geräte"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
+    "d": 20,
+    "id": "Ait4VP9hgso",
+    "t": "20 min. Figur Focus | Bauch - Beine - Po Workout | Homefitness ohne Geräte"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
+    "d": 20,
+    "id": "nh6oGrK3Tqg",
+    "t": "20 min. Rücken gestärkt, Bauch gestrafft, Taille geformt | ohne Geräte, im Stehen"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
+    "d": 20,
+    "id": "29Hu93Alhp0",
+    "t": "20 min. Ganzkörper Kick | Arme, Beine, Gesäß, Bauch, Rücken straffen & formen, ohne Geräte"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
+    "d": 20,
     "id": "uGorGULT8Nc",
     "t": "In nur 20 min. Fitness und Figur verbessern | ohne Geräte für Fortgeschrittene"
   },
@@ -271,6 +425,20 @@
     "d": 20,
     "id": "qcuiCPaSEc8",
     "t": "20 min. Grundlagen-Ausdauer | Fettverbrennung und Cardio, beliebig erweiterbar, ohne Geräte"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
+    "d": 25,
+    "id": "7gQo6tw74pU",
+    "t": "25 min. Quick Workout | Ganzkörpertraining ohne Geräte, für Fortgeschrittene"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
+    "d": 25,
+    "id": "ld37UTxyz00",
+    "t": "In 25 min. schnelle Ganzkörper-Fitness | ohne Geräte"
   },
   {
     "art": "Fitness",
@@ -311,6 +479,13 @@
     "art": "Fitness",
     "c": "Gabi Fastner",
     "d": 30,
+    "id": "rJobwrn-cF8",
+    "t": "30 min. Energiefluss | Faszien - Schwünge + Cardio, ca. 2500 Schritte, ohne Geräte, im Stehen"
+  },
+  {
+    "art": "Fitness",
+    "c": "Gabi Fastner",
+    "d": 30,
     "id": "2pEh4-ynggc",
     "t": "30 min. in Form | Fullbody - Workout für Zuhause | Figurtraining ohne Geräte"
   },
@@ -341,41 +516,6 @@
     "d": 30,
     "id": "ag0XWAebVtQ",
     "t": "30 min. kniefreundliches Ganzkörper-Workout | ohne Geräte"
-  },
-  {
-    "art": "Fitness",
-    "c": "Gabi Fastner",
-    "d": 40,
-    "id": "zUjQbFkf62Y",
-    "t": "40 min. Faszien Fitness | ohne Geräte, für Fortgeschrittene"
-  },
-  {
-    "art": "Fitness",
-    "c": "Gabi Fastner",
-    "d": 40,
-    "id": "y7DDvRcV50A",
-    "t": "40 min. Bewegungsstunde Faszien | Figur, Gesundheit und Wohlbefinden"
-  },
-  {
-    "art": "Fitness",
-    "c": "Gabi Fastner",
-    "d": 40,
-    "id": "KInCMicX6Uw",
-    "t": "40 min. Faszien Gymnastik ohne Geräte"
-  },
-  {
-    "art": "Fitness",
-    "c": "Gabi Fastner",
-    "d": 40,
-    "id": "S14Zh8IUDVs",
-    "t": "40 min. Workout für Faszien und Figur | ohne Geräte"
-  },
-  {
-    "art": "Fitness",
-    "c": "Gabi Fastner",
-    "d": 45,
-    "id": "arj-U9o2oXM",
-    "t": "45 min. Faszien, Körpermitte, Stretching | ohne Geräte, im Stehen"
   },
   {
     "art": "Meditation",
@@ -1986,5 +2126,243 @@
     "d": 94,
     "id": "viAq-ltPTXc",
     "t": "Guided Meditation | Ajahn Brahm | 1 June 2024"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 10,
+    "id": "ihba9Lw0tv4",
+    "t": "10 Minute Morning Stretch for every day | Simple routine to wake up & feel good"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 15,
+    "id": "yqeirBfn2j4",
+    "t": "15 Min. Yoga Stretch for Stress & Anxiety Relief | feel calm and relaxed right away"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 15,
+    "id": "yMNLa17g9uc",
+    "t": "15 Min. Leg Stretch | Flexibility Routine for Hamstrings, Butt & Hips | Post Run Stretch"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 15,
+    "id": "g_tea8ZNk5A",
+    "t": "15 Min. Full Body Stretch | Daily Routine for Flexibility, Mobility & Relaxation | DAY 7"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 15,
+    "id": "4snu7NxD4nM",
+    "t": "15 Min. Morning Stretch | wake up & feel amazing | the best way to start your day!"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 19,
+    "id": "t1Yskz4LBBY",
+    "t": "Yoga Beweglichkeit, Kraft, Entspannung | Hüftbeuger dehnen gegen Rückenschmerzen | Stress lass nach!"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 20,
+    "id": "aGcwjh4kETQ",
+    "t": "20 Min. Daily Yoga Stretch | Full Body Routine for All Levels"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 20,
+    "id": "m9Wq6A4iRrY",
+    "t": "20 min. beweglich & beschwerdefrei | Muskulatur rund um die Hüfte stärken & dehnen, ohne Geräte"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 20,
+    "id": "niWia79RwWU",
+    "t": "20 min. gut gedehnt in den Tag starten | ohne Geräte, im Stehen"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 20,
+    "id": "UgywbOsSWZ4",
+    "t": "20 min. Faszien - Verklebungen lösen | alle Hauptlinien dehnen, Gymnastik ohne Geräte, im Stehen"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 20,
+    "id": "PZlrFK15PfQ",
+    "t": "Durchgedehnt in 20 min. | Stretching und aktiv entspannt, ohne Geräte"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 20,
+    "id": "47_UbL8lXx8",
+    "t": "20 min. für Deine Brust- und Lendenwirbelsäule"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 20,
+    "id": "kApPj-mNcO4",
+    "t": "Yoga Beweglichkeit, Dehnung, Entspannung | Hüften öffnen & Rücken mobilisieren | Zur Ruhe kommen"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 21,
+    "id": "Nwg5j55gicI",
+    "t": "Yoga Schulter Nacken Entspannen | Verspannungen lösen | Übungen für den Alltag"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 23,
+    "id": "p3Q_L90be2s",
+    "t": "Yoga Rücken Anfänger Programm | Übungen gegen Verspannungen und Rückenschmerzen"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 24,
+    "id": "5L0WUcbwMtc",
+    "t": "Yoga für einen gesunden Rücken und geschmeidige Hüften | Verspannungen lösen & Energie tanken"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 25,
+    "id": "LCFrL_rJ510",
+    "t": "Yoga Hüftöffner Intensive Dehnung | Deep Stretch Routine"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 25,
+    "id": "tnZ96Y2C28Y",
+    "t": "25 Min. Full Body Stretch | Deep Stretching Routine to Level Up Your Flexibility | Start now ;)"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 25,
+    "id": "Uh7Eu-0ww3k",
+    "t": "25 min, die Hüfte bewegen, kräftigen und dehnen | ohne Geräte"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 25,
+    "id": "2wJCmOVoM74",
+    "t": "25 min. Faszien - Training ohne Hilfsmittel"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 25,
+    "id": "Rz0FiZdHImU",
+    "t": "Entspanntes Yoga für Hüfte, Rücken & Schultern | Bye Bye Stress und Anspannung! | 25 Min. Stretch"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 25,
+    "id": "yVATnku2B4E",
+    "t": "25 min. basic Stretching | Stretching für Jedermann, Dehnen und Faszientraining ohne Geräte"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 25,
+    "id": "TWzObelsqpQ",
+    "t": "25 min. Faszien bewegen | ohne Hilfsmittel, im Stehen"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 25,
+    "id": "Abv7M1sgNiU",
+    "t": "Yoga Hüftöffner für Entspannung & Beweglichkeit | Intensive Dehnung für flexible Hüften | 25 Min."
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 25,
+    "id": "xUHza6YKRfk",
+    "t": "Yoga für Entspannung & Beweglichkeit | Innere Ruhe finden + Verspannungen im Rücken lösen | Slow Yoga"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 30,
+    "id": "SSTbUwhw_zM",
+    "t": "30 min. fasziale Wirbelsäulen-Gymnastik | im Stehen, ohne Geräte"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 30,
+    "id": "MMcHZbBznN4",
+    "t": "30 min. Mobility Stretch | Beweglichkeit und Wohlbefinden verbessern, ohne Geräte"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 30,
+    "id": "7u4PM7UdFCE",
+    "t": "30 min. Stretching am Boden | Wohlfühl-Training ohne Geräte"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Mady Morrison",
+    "d": 30,
+    "id": "iF9h0WwXWk8",
+    "t": "Yoga für Beweglichkeit | Stretch & Flow | Tiefe Dehnungen und neue Haltungen | Mittelstufe"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 40,
+    "id": "zUjQbFkf62Y",
+    "t": "40 min. Faszien Fitness | ohne Geräte, für Fortgeschrittene"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 40,
+    "id": "y7DDvRcV50A",
+    "t": "40 min. Bewegungsstunde Faszien | Figur, Gesundheit und Wohlbefinden"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 40,
+    "id": "KInCMicX6Uw",
+    "t": "40 min. Faszien Gymnastik ohne Geräte"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 40,
+    "id": "S14Zh8IUDVs",
+    "t": "40 min. Workout für Faszien und Figur | ohne Geräte"
+  },
+  {
+    "art": "Dehnen",
+    "c": "Gabi Fastner",
+    "d": 45,
+    "id": "arj-U9o2oXM",
+    "t": "45 min. Faszien, Körpermitte, Stretching | ohne Geräte, im Stehen"
   }
 ]
