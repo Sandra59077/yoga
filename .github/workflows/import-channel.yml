@@ -1,0 +1,31 @@
+name: Kanal -> Notion (Videos ergänzen)
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel_id:
+        description: 'YouTube-Kanal-ID'
+        default: 'UCHJBoCDxaCTRrwCHXEBA-BA'   # Mady Morrison
+      kanal:
+        description: 'Name fuers Feld Kanal'
+        default: 'Mady Morrison'
+      max_add:
+        description: 'Wie viele Videos hoechstens anlegen'
+        default: '20'
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Kanal-Videos nach Notion importieren
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          CHANNEL_ID: ${{ inputs.channel_id }}
+          KANAL: ${{ inputs.kanal }}
+          MAX_ADD: ${{ inputs.max_add }}
+        run: node scripts/import-channel.mjs
