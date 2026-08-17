@@ -14,7 +14,7 @@
     --bg1:#1b2a4a; --bg2:#22344f; --accent:#9bc7b5; --accent2:#e7b7a3;
     --card:rgba(255,255,255,.08); --card-br:rgba(255,255,255,.16);
     --text:#f4f1ea; --muted:#b9c2cf;
-    --yoga:#9bc7b5; --fitness:#e7a17a; --med:#b7a6e0;
+    --yoga:#9bc7b5; --fitness:#e7a17a; --med:#b7a6e0; --stretch:#e3a7c7;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html,body{margin:0;padding:0;height:100%;}
@@ -46,6 +46,7 @@
   .art.yoga .ic{background:rgba(155,199,181,.22);}
   .art.fitness .ic{background:rgba(231,161,122,.22);}
   .art.med .ic{background:rgba(183,166,224,.22);}
+  .art.stretch .ic{background:rgba(227,167,199,.22);}
   .art .arrow{color:var(--muted);font-size:1.3rem;}
 
   .back{background:none;border:none;color:var(--muted);font-size:.95rem;cursor:pointer;padding:6px 0;margin-bottom:6px;}
@@ -53,6 +54,7 @@
   .pill.yoga{background:rgba(155,199,181,.22);color:var(--yoga);}
   .pill.fitness{background:rgba(231,161,122,.22);color:var(--fitness);}
   .pill.med{background:rgba(183,166,224,.22);color:var(--med);}
+  .pill.stretch{background:rgba(227,167,199,.22);color:var(--stretch);}
 
   .label{font-size:.9rem;color:var(--muted);margin:0 0 .6em;}
   .chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
@@ -128,6 +130,11 @@
         <div class="tx"><b>Meditation</b><span>Ajahn Brahm</span></div>
         <div class="arrow">›</div>
       </div>
+      <div class="art stretch" data-art="Dehnen">
+        <div class="ic">🤸🏻</div>
+        <div class="tx"><b>Dehnen</b><span>Mady Morrison &amp; Gabi Fastner</span></div>
+        <div class="arrow">›</div>
+      </div>
     </div>
   </div>
 
@@ -174,19 +181,19 @@
 let VIDEOS = [
   // ---------- YOGA ----------
   {art:"Yoga",c:"Mady Morrison",d:15,id:"xOJeRLc66r4",t:"Yoga Energy Flow | wach & energiegeladen in 15 Minuten | perfekt für zwischendurch"},
-  {art:"Yoga",c:"Mady Morrison",d:15,id:"4snu7NxD4nM",t:"15 Min. Morning Stretch | wake up & feel amazing | the best way to start your day!"},
-  {art:"Yoga",c:"Mady Morrison",d:10,id:"ihba9Lw0tv4",t:"10 Minute Morning Stretch for every day | Simple routine to wake up & feel good"},
+  {art:"Dehnen",c:"Mady Morrison",d:15,id:"4snu7NxD4nM",t:"15 Min. Morning Stretch | wake up & feel amazing | the best way to start your day!"},
+  {art:"Dehnen",c:"Mady Morrison",d:10,id:"ihba9Lw0tv4",t:"10 Minute Morning Stretch for every day | Simple routine to wake up & feel good"},
   {art:"Yoga",c:"Mady Morrison",d:15,id:"8dS4DUkLhBU",t:"Yoga Ganzkörper Flow | Verspannungen im oberen Rücken lösen | Entspannt in den Feierabend"},
-  {art:"Yoga",c:"Mady Morrison",d:20,id:"kApPj-mNcO4",t:"Yoga Beweglichkeit, Dehnung, Entspannung | Hüften öffnen & Rücken mobilisieren | Zur Ruhe kommen"},
+  {art:"Dehnen",c:"Mady Morrison",d:20,id:"kApPj-mNcO4",t:"Yoga Beweglichkeit, Dehnung, Entspannung | Hüften öffnen & Rücken mobilisieren | Zur Ruhe kommen"},
   {art:"Yoga",c:"Mady Morrison",d:20,id:"X2GxGhOcjQ0",t:"Yoga Ganzkörper Flow | 20 Min. Workout Mittelstufe | Fühl dich stark, fit & selbstbewusst!"},
   {art:"Yoga",c:"Mady Morrison",d:18,id:"-btuQsCiyfc",t:"Yoga für den Morgen | sanft belebend und aktivierend | 18 Min. Rise & Shine (auch für Anfänger)"},
   {art:"Yoga",c:"Yoga With Adriene",d:20,id:"SedzswEwpPw",t:"Yoga for Neck and Shoulder Relief - Yoga With Adriene"},
   {art:"Yoga",c:"Mady Morrison",d:25,id:"LOi9B2Syej8",t:"Yoga Ganzkörper Flow | Stark, Konzentriert & Selbstbewusst | 25 Minuten Mittelstufe"},
   {art:"Yoga",c:"Mady Morrison",d:25,id:"4CBKYS9ywBQ",t:"Yoga Flow für Energie, Kraft & Beweglichkeit | wach und klar | Joshua Tree"},
-  {art:"Yoga",c:"Mady Morrison",d:25,id:"xUHza6YKRfk",t:"Yoga für Entspannung & Beweglichkeit | Innere Ruhe finden + Verspannungen im Rücken lösen | Slow Yoga"},
+  {art:"Dehnen",c:"Mady Morrison",d:25,id:"xUHza6YKRfk",t:"Yoga für Entspannung & Beweglichkeit | Innere Ruhe finden + Verspannungen im Rücken lösen | Slow Yoga"},
   {art:"Yoga",c:"Mady Morrison",d:25,id:"ti2tG5f9UX0",t:"Yoga Ganzkörper Flow für Kraft, Energie und Wärme | Beine, Po & Schultern | 25 Min. sweet & spicy"},
   {art:"Yoga",c:"Mady Morrison",d:25,id:"Qq-4EM5cqQY",t:"Yoga für Kraft, Beweglichkeit & innere Ruhe | Beine stärken und dehnen | Vinyasa Flow"},
-  {art:"Yoga",c:"Mady Morrison",d:30,id:"iF9h0WwXWk8",t:"Yoga für Beweglichkeit | Stretch & Flow | Tiefe Dehnungen und neue Haltungen | Mittelstufe"},
+  {art:"Dehnen",c:"Mady Morrison",d:30,id:"iF9h0WwXWk8",t:"Yoga für Beweglichkeit | Stretch & Flow | Tiefe Dehnungen und neue Haltungen | Mittelstufe"},
   {art:"Yoga",c:"Mady Morrison",d:30,id:"TAbH1yusgRo",t:"Yoga Ganzkörper Flow | Bauch Beine Po & Rücken | 30 Min. Workout"},
   {art:"Yoga",c:"Mady Morrison",d:30,id:"WeKeMgD_Nl4",t:"Yoga Full Body Summer Flow | Kraft & Balance | 30 Min. stärken, dehnen und rundum gut fühlen"},
   {art:"Yoga",c:"Mady Morrison",d:30,id:"JCsJgYI2vys",t:"Yoga für Rücken, Brust & Wirbelsäule | Körper mobilisieren | 30 Minuten zum wach werden & loslassen!"},
@@ -224,11 +231,11 @@ let VIDEOS = [
   {art:"Fitness",c:"Gabi Fastner",d:30,id:"ag0XWAebVtQ",t:"30 min. kniefreundliches Ganzkörper-Workout | ohne Geräte"},
   {art:"Fitness",c:"Gabi Fastner",d:30,id:"nP_6NeNtNnM",t:"In 30 min. super in Form | Home-Workout ohne Geräte, für Fortgeschrittene"},
   {art:"Fitness",c:"Gabi Fastner",d:30,id:"15erd3ILI-A",t:"30 min. Figur - WORKOUT | formen, straffen, kräftigen | ohne Geräte"},
-  {art:"Fitness",c:"Gabi Fastner",d:40,id:"zUjQbFkf62Y",t:"40 min. Faszien Fitness | ohne Geräte, für Fortgeschrittene"},
-  {art:"Fitness",c:"Gabi Fastner",d:40,id:"S14Zh8IUDVs",t:"40 min. Workout für Faszien und Figur | ohne Geräte"},
-  {art:"Fitness",c:"Gabi Fastner",d:40,id:"y7DDvRcV50A",t:"40 min. Bewegungsstunde Faszien | Figur, Gesundheit und Wohlbefinden"},
-  {art:"Fitness",c:"Gabi Fastner",d:40,id:"KInCMicX6Uw",t:"40 min. Faszien Gymnastik ohne Geräte"},
-  {art:"Fitness",c:"Gabi Fastner",d:45,id:"arj-U9o2oXM",t:"45 min. Faszien, Körpermitte, Stretching | ohne Geräte, im Stehen"},
+  {art:"Dehnen",c:"Gabi Fastner",d:40,id:"zUjQbFkf62Y",t:"40 min. Faszien Fitness | ohne Geräte, für Fortgeschrittene"},
+  {art:"Dehnen",c:"Gabi Fastner",d:40,id:"S14Zh8IUDVs",t:"40 min. Workout für Faszien und Figur | ohne Geräte"},
+  {art:"Dehnen",c:"Gabi Fastner",d:40,id:"y7DDvRcV50A",t:"40 min. Bewegungsstunde Faszien | Figur, Gesundheit und Wohlbefinden"},
+  {art:"Dehnen",c:"Gabi Fastner",d:40,id:"KInCMicX6Uw",t:"40 min. Faszien Gymnastik ohne Geräte"},
+  {art:"Dehnen",c:"Gabi Fastner",d:45,id:"arj-U9o2oXM",t:"45 min. Faszien, Körpermitte, Stretching | ohne Geräte, im Stehen"},
 
   // ---------- MEDITATION (Ajahn Brahm) ----------
   {art:"Meditation",c:"Ajahn Brahm Miniclips",d:29,id:"UX-fH2yh_PQ",t:"30 min Beginners Guided Meditation by Ajahn Brahm"},
@@ -263,7 +270,8 @@ const QUICK = [15,20,25,30,45,60,90];
 const ART_META = {
   Yoga:{icon:"🧘🏻",cls:"yoga"},
   Fitness:{icon:"💪",cls:"fitness"},
-  Meditation:{icon:"🕉️",cls:"med"}
+  Meditation:{icon:"🕉️",cls:"med"},
+  Dehnen:{icon:"🤸🏻",cls:"stretch"}
 };
 
 let currentArt = null;
